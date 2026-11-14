@@ -11,7 +11,7 @@ const pad = (n) => (n < 10 ? '0' : '') + n;
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const damp = (a, b, rate, dt) => a + (b - a) * (1 - Math.exp(-rate * dt));
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
-const glOK = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
+const glOK = window.TCPerf ? window.TCPerf.glCheck() : (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
 const fontsReady = document.fonts && document.fonts.load ? Promise.all(['400 60px Fraunces', '300 60px Fraunces', '800 30px Manrope'].map((f) => document.fonts.load(f))).catch(() => {}) : Promise.resolve();
 const loadImg = (src) => new Promise((res) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src; });
 const iconImg = (s) => loadImg('data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="192" height="192" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${s.icon}</svg>`));
@@ -81,7 +81,7 @@ function init() {
   build();
 
   async function build() {
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: !(window.TCPerf && window.TCPerf.texQ() < 1), alpha: true, powerPreference: 'high-performance' });
     renderer.setPixelRatio(window.TCPerf ? window.TCPerf.dpr(1.5) : Math.min(devicePixelRatio || 1, 1.5));
     renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
@@ -107,7 +107,7 @@ function init() {
     const slab = new THREE.ExtrudeGeometry(sh, { depth: Dp, bevelEnabled: true, bevelThickness: .07, bevelSize: .07, bevelSegments: 5, curveSegments: 12 }); slab.translate(0, 0, -Dp / 2);
     // see-through glass instead of a refraction pass: the panel inside stays pin sharp
     const glass = new THREE.MeshPhysicalMaterial({ color: 0x2A0E16, metalness: 0, roughness: .04, transparent: true, opacity: .16, clearcoat: 1, clearcoatRoughness: .02, envMapIntensity: 3, depthWrite: false });
-    const IW = W - .16, IH = H - .16, TW = 1024, TH = Math.round(TW * IH / IW), k = TW / 600; // panel texture in a 600-wide layout, drawn at 1024 px
+    const IW = W - .16, IH = H - .16, TW = Math.round(1024 * (window.TCPerf ? window.TCPerf.texQ() : 1)), TH = Math.round(TW * IH / IW), k = TW / 600; // panel texture in a 600-wide layout, drawn at 1024 px
     const shadowTex = radial([[0, 'rgba(0,0,0,.55)'], [1, 'rgba(0,0,0,0)']]), poolTex = radial([[0, 'rgba(255,255,255,1)'], [1, 'rgba(255,255,255,0)']]);
     const reflV = `varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.); }`;
     const reflF = `uniform sampler2D tMap; uniform float uA; varying vec2 vUv; void main(){ vec4 c = texture2D(tMap, vUv); float f = 1. - smoothstep(0., .3, vUv.y); gl_FragColor = vec4(c.rgb, c.a * f * uA); }`;
@@ -131,7 +131,7 @@ function init() {
       x.fillStyle = '#E9B949'; x.font = '800 27px Manrope'; wrap(x, s.sub.toUpperCase(), 504).slice(0, 3).forEach((l) => { x.fillText(l, 48, y); y += 38; });
       x.fillStyle = 'rgba(255,255,255,.55)'; x.font = '800 22px Manrope'; x.fillText(matchMedia('(hover: hover)').matches ? 'HOVER FOR DETAILS' : 'TAP FOR DETAILS', 48, LH - 52);
       x.restore();
-      const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = aniso; t.generateMipmaps = true; t.minFilter = THREE.LinearMipmapLinearFilter;
+      const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = aniso; t.generateMipmaps = true; t.minFilter = THREE.LinearMipmapLinearFilter; if (window.TCPerf) window.TCPerf.release(t);
       const inner = new THREE.Mesh(new THREE.PlaneGeometry(IW, IH), new THREE.MeshBasicMaterial({ map: t, toneMapped: false, transparent: true, alphaTest: .5 }));
       inner.position.set(0, H / 2, 0); inner.renderOrder = 1;
       const body = new THREE.Mesh(slab, glass); body.renderOrder = 2; body.userData.i = i;

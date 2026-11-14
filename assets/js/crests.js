@@ -17,11 +17,11 @@ function init() {
   let cur = 0;
   const mark = U.chips(root.querySelector('[data-uchips]'), (i) => select(i));
   U.setCard(card, 0);
-  let gl = false; try { const c = document.createElement('canvas'); gl = !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) {}
+  let gl = false; if (window.TCPerf) gl = window.TCPerf.glCheck(); else try { const c = document.createElement('canvas'); gl = !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) {}
   if (!gl) { canvas.style.display = 'none'; return; }
 
   /* renderer that only draws while the section is on screen */
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: !(window.TCPerf && window.TCPerf.texQ() < 1), alpha: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(window.TCPerf ? window.TCPerf.dpr(1.5) : Math.min(devicePixelRatio || 1, 1.5));
   renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
   const camera = new THREE.PerspectiveCamera(30, 1, .1, 200);
@@ -55,8 +55,9 @@ function init() {
     const step = TAU / txt.length; txt.forEach((ch, k) => { x.save(); x.rotate(-Math.PI / 2 + k * step); x.translate(0, -404); x.fillText(ch, 0, 0); x.restore(); });
   }
   function canvasTex(draw, srgb = true, flipY = true) {
-    const S = 1024, c = document.createElement('canvas'); c.width = c.height = S; const x = c.getContext('2d'); x.translate(S / 2, S / 2); draw(x, S / 2);
-    const t = new THREE.CanvasTexture(c); if (srgb) t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; t.flipY = flipY; return t;
+    // drawn in a 1024 layout; on phones the canvas itself is half size (TCPerf.texQ) and is freed once uploaded
+    const S = 1024, Q = window.TCPerf ? window.TCPerf.texQ() : 1, c = document.createElement('canvas'); c.width = c.height = Math.round(S * Q); const x = c.getContext('2d'); x.scale(Q, Q); x.translate(S / 2, S / 2); draw(x, S / 2);
+    const t = new THREE.CanvasTexture(c); if (srgb) t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; t.flipY = flipY; return window.TCPerf ? window.TCPerf.release(t) : t;
   }
   function face(u, metal) {
     return canvasTex((x, C) => {

@@ -27,7 +27,7 @@ function init() {
   ];
   const N = CARDS.length + 1; /* the last one is the plain sheet */
 
-  let ok = false; try { const t = document.createElement('canvas'); ok = !!t.getContext('webgl2'); } catch (e) {}
+  let ok = false; if (window.TCPerf) ok = window.TCPerf.glCheck('webgl2'); else try { const t = document.createElement('canvas'); ok = !!t.getContext('webgl2'); } catch (e) {}
   if (!ok) { root.classList.add('wm-nogl'); return; }
 
   /* ---- the original's constants ---- */
@@ -62,10 +62,10 @@ function init() {
   }
 
   /* ---- card faces ---- */
-  const TW = 1200, TH = Math.round(1200 / ASPECT);
+  const TW = 1200, TH = Math.round(1200 / ASPECT), TQ = window.TCPerf ? window.TCPerf.texQ() : 1;   // TQ: drawn at half size on phones
   const pad = (n) => (n < 10 ? '0' : '') + n;
   function face(card, i, img) {
-    const c = document.createElement('canvas'); c.width = TW; c.height = TH; const g = c.getContext('2d');
+    const c = document.createElement('canvas'); c.width = Math.round(TW * TQ); c.height = Math.round(TH * TQ); const g = c.getContext('2d'); g.scale(TQ, TQ);
     const s = Math.max(TW / img.naturalWidth, TH / img.naturalHeight), w = img.naturalWidth * s, h = img.naturalHeight * s;
     g.drawImage(img, (TW - w) / 2, (TH - h) / 2, w, h);
     const sh = g.createLinearGradient(0, TH * .3, 0, TH); sh.addColorStop(0, 'rgba(7,11,34,0)'); sh.addColorStop(1, 'rgba(7,11,34,.92)'); g.fillStyle = sh; g.fillRect(0, 0, TW, TH);
@@ -88,7 +88,7 @@ function init() {
   }
   /* the plain sheet: a dashed ring and two lines, drawn over the sheet's own colour in the shader */
   function sheet() {
-    const c = document.createElement('canvas'); c.width = TW; c.height = TH; const g = c.getContext('2d');
+    const c = document.createElement('canvas'); c.width = Math.round(TW * TQ); c.height = Math.round(TH * TQ); const g = c.getContext('2d'); g.scale(TQ, TQ);
     const m = TW * .02, r = G.corner * TH - m; g.strokeStyle = 'rgba(255,255,255,.28)'; g.lineWidth = 2.5; g.setLineDash([TW * .012, TW * .009]);
     g.beginPath(); g.roundRect(m, m, TW - 2 * m, TH - 2 * m, Math.max(4, r)); g.stroke(); g.setLineDash([]);
     g.strokeStyle = '#FFCC00'; g.lineWidth = 5; g.lineCap = 'round'; g.lineJoin = 'round';
@@ -100,7 +100,7 @@ function init() {
   }
   const renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: false, alpha: true, premultipliedAlpha: true, powerPreference: 'high-performance' });
   renderer.outputColorSpace = THREE.LinearSRGBColorSpace; renderer.setClearColor(0, 0);
-  function tex(c) { const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.NoColorSpace; t.generateMipmaps = true; t.minFilter = THREE.LinearMipmapLinearFilter; t.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); return t; }
+  function tex(c) { const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.NoColorSpace; t.generateMipmaps = true; t.minFilter = THREE.LinearMipmapLinearFilter; t.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); return window.TCPerf ? window.TCPerf.release(t) : t; }
 
   /* ---- shaders: the original's sheet, bend, wave, springs, blur, sheen, rim, haze ---- */
   const VS = `

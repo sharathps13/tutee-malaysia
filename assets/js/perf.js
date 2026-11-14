@@ -49,6 +49,21 @@
   var idle = window.requestIdleCallback ? function (fn) { requestIdleCallback(fn, { timeout: 300 }); } : function (fn) { setTimeout(fn, 40); };
   var TCPerf = window.TCPerf = {
     lite: lite,
+    // texture resolution for the WebGL scenes: half size on phones and weaker devices (an iPhone kills a page that holds
+    // dozens of full-size canvases), full size elsewhere
+    texQ: function () { return (small || touch && Math.max(screen.width, screen.height) < 1100 || TCPerf.lite) ? .5 : 1; },
+    // a texture drawn once on a canvas: after it is uploaded to the GPU the canvas is shrunk to 1 px, so the page does not
+    // keep a second copy of every texture in memory (phones only; none of these textures is ever redrawn)
+    release: function (t) {
+      if (TCPerf.texQ() >= 1 || !t) return t;
+      t.onUpdate = function () { t.onUpdate = null; var c = t.image; if (c && c.getContext) setTimeout(function () { c.width = c.height = 1; }, 0); };
+      return t;
+    },
+    // a WebGL support check that does not leave a live context behind
+    glCheck: function (kind) {
+      try { var c = document.createElement('canvas'), g = c.getContext(kind || 'webgl2') || (!kind && c.getContext('webgl'));
+        if (!g) return false; var x = g.getExtension('WEBGL_lose_context'); if (x) x.loseContext(); return true; } catch (e) { return false; }
+    },
     // resolves in the next idle slot: lets heavy one-off work (drawing card textures) run a piece at a time
     idle: function () { return new Promise(function (r) { idle(r); }); },
     // pixel density for a WebGL canvas: crisp enough on retina, never the full 3x of a phone
@@ -106,7 +121,8 @@
     });
     // and in any case, one after another while the page is idle once it has loaded
     // (data-saver preloads only the first; the others still load as their section comes near). Never mid-scroll.
-    var upto = save ? 1 : LAZY.length;
+    // phones never preload: each scene starts only as its section comes near, so the page never holds all three at once on load
+    var upto = save ? 1 : (touch && small) ? 0 : LAZY.length;
     var queue = function () { var k = 0; (function step() { if (k >= upto) return; if (scrolling) return setTimeout(step, 500); load(k++); setTimeout(function () { idle(step); }, 1800); })(); };
     var afterLoad = function () { setTimeout(function () { idle(queue); }, 600); setTimeout(probe, 7000); };
     if (document.readyState === 'complete') afterLoad(); else addEventListener('load', afterLoad);
