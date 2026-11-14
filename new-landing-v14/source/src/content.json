@@ -1,0 +1,1066 @@
+{
+"reasons": [
+{
+"big": "391",
+"unit": "",
+"title": "EMGS institutions",
+"text": "Research universities, private universities, branch campuses and colleges, all registered for international students.",
+"img": "why-students"
+},
+{
+"big": "RM 14k",
+"unit": "",
+"title": "Public tuition, per year, from",
+"text": "Typical annual tuition at a public university. Private universities cost more but stay well below UK, US or Australian fees.",
+"img": "u-3"
+},
+{
+"big": "12",
+"unit": "months",
+"title": "Graduate Pass",
+"text": "Stay on after a bachelor's degree or higher, with part-time work in approved sectors while you plan your next move.",
+"img": "sv-aid"
+},
+{
+"big": "UK·AU",
+"unit": "",
+"title": "Branch campuses",
+"text": "Including Monash, Nottingham, Southampton, Heriot-Watt, Curtin and Swinburne, awarding the same degree certificate as their home campuses.",
+"img": "why-towers"
+},
+{
+"big": "3",
+"unit": "cultures",
+"title": "One campus",
+"text": "Malay, Chinese and Indian festivals fill the calendar, Tamil is widely spoken and South Indian food is everywhere.",
+"img": "l-lanterns"
+},
+{
+"big": "~4",
+"unit": "hours",
+"title": "From Chennai",
+"text": "A short-notice trip home is easy, and lectures and exams all run in English.",
+"img": "sv-visa"
+}
+],
+"places": [
+{
+"name": "Kuala Lumpur",
+"tag": "The capital",
+"img": "pl-kl",
+"color": "#1B2A6B",
+"count": 96,
+"code": "KUL",
+"states": [
+"Kuala Lumpur"
+],
+"text": "Southeast Asia's business crossroads. Internships at regional headquarters, a fast metro, and food from every corner of Asia for a few ringgit.",
+"chips": [
+"Universiti Malaya",
+"UCSI",
+"APU"
+],
+"lat": 3.139,
+"lon": 101.687,
+"mx": 153,
+"my": 306
+},
+{
+"name": "Selangor & Putrajaya",
+"tag": "The campus belt",
+"img": "pl-putrajaya",
+"color": "#8E2F57",
+"count": 110,
+"code": "SGR",
+"states": [
+"Selangor",
+"Putrajaya"
+],
+"text": "The suburbs ringing KL hold the densest cluster of campuses in the country, linked to the city by train.",
+"chips": [
+"Taylor's",
+"Sunway",
+"UKM",
+"UPM"
+],
+"lat": 2.93,
+"lon": 101.69,
+"mx": 128,
+"my": 283
+},
+{
+"name": "Penang",
+"tag": "Heritage island",
+"img": "pl-penang",
+"color": "#0E5C5A",
+"count": 27,
+"code": "PEN",
+"states": [
+"Pulau Pinang"
+],
+"text": "UNESCO-listed George Town, a large electronics and semiconductor industry, and some of the best street food in Asia.",
+"chips": [
+"Universiti Sains Malaysia"
+],
+"lat": 5.414,
+"lon": 100.329,
+"mx": 60,
+"my": 151
+},
+{
+"name": "Melaka & Johor",
+"tag": "The south",
+"img": "pl-melaka",
+"color": "#8F1B24",
+"count": 41,
+"code": "MLK",
+"states": [
+"Melaka",
+"Johor"
+],
+"text": "Heritage Melaka keeps living costs low. Johor's EduCity hosts British branch campuses a short hop from Singapore.",
+"chips": [
+"UTM, Skudai",
+"Southampton Malaysia"
+],
+"lat": 2.19,
+"lon": 102.25,
+"mx": 236,
+"my": 390
+},
+{
+"name": "Sabah & Sarawak",
+"tag": "Malaysian Borneo",
+"img": "pl-borneo",
+"color": "#1F5A3A",
+"count": 38,
+"code": "BOR",
+"states": [
+"Sabah",
+"Sarawak",
+"Labuan"
+],
+"text": "Mount Kinabalu, rainforest and reef, with Australian branch campuses in Kuching and Miri.",
+"chips": [
+"Curtin Malaysia",
+"Swinburne Sarawak",
+"UMS"
+],
+"lat": 1.55,
+"lon": 110.35,
+"mx": 600,
+"my": 280
+}
+],
+"services": [
+{
+"color": "#e01b33",
+"key": "students",
+"title": "Career consultation",
+"sub": "Free, and specific to Malaysia",
+"icon": "<path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"/><path d=\"M8 10h.01M12 10h.01M16 10h.01\"/>",
+"text": "A free session on your profile and where it can take you. We walk you and your family through Malaysian tuition, the twelve-month Graduate Pass and who is eligible for it, and the route onward to an Employment Pass, so everyone decides with the same facts."
+},
+{
+"color": "#14b39a",
+"key": "library",
+"title": "Language test",
+"sub": "MUET, IELTS, TOEFL iBT, PTE, Cambridge, ELS",
+"icon": "<path d=\"m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6\"/>",
+"text": "Training, mock tests and free study material, then a booking for a test EMGS accepts for the Student Pass. Attach the certificate to your application: without it EMGS may not grant a pass for the full length of your course. The Duolingo English Test is not on the EMGS list."
+},
+{
+"color": "#2338c9",
+"key": "kl-aerial",
+"title": "College selection",
+"sub": "Across all 391 EMGS institutions",
+"icon": "<path d=\"M22 10 12 5 2 10l10 5 10-5z\"/><path d=\"M6 12v5c3 3 9 3 12 0v-5\"/>",
+"text": "Based on your interests and marks, we compare public research universities, private universities, foreign branch campuses and university colleges. You see module structures, credit requirements, placement years and graduate outcomes before you choose."
+},
+{
+"color": "#ec2f6b",
+"key": "students-group",
+"title": "Documentation",
+"sub": "Your EMGS application, done right",
+"icon": "<path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"/><path d=\"M14 2v6h6M9 15l2 2 4-4\"/>",
+"text": "Samples, clear requirements and strict formatting for your statement of purpose, references and transcripts. We review everything several times before anything is submitted, which is how complicated profiles still clear."
+},
+{
+"color": "#ff7a3c",
+"key": "klcc-lit",
+"title": "Student Pass",
+"sub": "EMGS, eVAL and Immigration endorsement",
+"icon": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/><circle cx=\"9\" cy=\"11\" r=\"2\"/><path d=\"M15 9h3M15 13h3M6 17c.5-1.5 1.7-2 3-2s2.5.5 3 2\"/>",
+"text": "Malaysia runs no credibility interview for a Student Pass, so the decisive work is on paper. We check every field of your EMGS application against your offer letter, build your financial evidence, arrange the pre-arrival medical screening, and catch the 18-month passport validity rule, the most common avoidable error."
+},
+{
+"color": "#0b5d4b",
+"key": "graduates",
+"title": "End-to-end settlement",
+"sub": "Graduate Pass, Employment Pass, PR",
+"icon": "<path d=\"M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6\"/>",
+"text": "We map the long game: checking your nationality against the Graduate Pass list, lining up the Malaysian citizen sponsor it requires, then employer sponsorship for an Employment Pass and the route to Permanent Residence."
+},
+{
+"color": "#d98a00",
+"key": "graduate-cap",
+"title": "Financial aid",
+"sub": "Loans, scholarships and bursaries",
+"icon": "<rect x=\"2\" y=\"6\" width=\"20\" height=\"12\" rx=\"2\"/><circle cx=\"12\" cy=\"12\" r=\"2.5\"/><path d=\"M6 12h.01M18 12h.01\"/>",
+"text": "Collateral and non-collateral education loans through our banking partners, covering tuition and accommodation. Strong students get guided applications for merit scholarships and bursaries straight from Malaysian institutions."
+},
+{
+"color": "#5b2a86",
+"key": "batu-caves",
+"title": "Post-landing",
+"sub": "Your first weeks in Malaysia",
+"icon": "<path d=\"M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z\"/>",
+"text": "Safe accommodation, the post-arrival medical screening and Student Pass endorsement, local health insurance, a Malaysian bank account and a Touch 'n Go card, and your institution's application for vacation work permission."
+},
+{
+"color": "#b8124a",
+"key": "cameron",
+"title": "Family migration",
+"sub": "Dependant Passes, checked honestly",
+"icon": "<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/><path d=\"M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75\"/>",
+"text": "Postgraduates may bring a spouse, children and even parents on Dependant Passes. Undergraduates may only do so from 17 listed countries, and India is not one of them, so we check your eligibility before you plan around it."
+}
+],
+"svcImgs": [
+"sv-career",
+"sv-lang",
+"sv-college",
+"sv-docs",
+"sv-visa",
+"sv-settle",
+"sv-aid",
+"sv-landing",
+"sv-family"
+],
+"tags": [
+"Free",
+"MUET · IELTS",
+"391 options",
+"EMGS",
+"eVAL",
+"PR route",
+"Loans",
+"First week",
+"Dependants"
+],
+"unis": [
+{
+"id": "universiti-malaya-um",
+"name": "Universiti Malaya (UM)",
+"rank": 1,
+"location": "Kuala Lumpur",
+"type": "Research University",
+"accredited": "402",
+"programs": "Health & Welfare, Arts & Humanities, Education",
+"alt": "UM, Kuala Lumpur",
+"ranked": true
+},
+{
+"id": "universiti-sains-malaysia-usm",
+"name": "Universiti Sains Malaysia (USM)",
+"rank": 2,
+"location": "Gelugor, Pulau Pinang",
+"type": "Research University",
+"accredited": "434",
+"programs": "Health & Welfare, Engineering & Construction, Natural Sciences & Mathematics",
+"alt": "USM, Pulau Pinang",
+"ranked": true
+},
+{
+"id": "universiti-kebangsaan-malaysia-ukm",
+"name": "Universiti Kebangsaan Malaysia (UKM)",
+"rank": 3,
+"location": "Bangi, Selangor",
+"type": "Research University",
+"accredited": "512",
+"programs": "Health & Welfare, Natural Sciences & Mathematics, Social Sciences & Journalism",
+"alt": "UKM, Selangor",
+"ranked": true
+},
+{
+"id": "universiti-putra-malaysia-upm",
+"name": "Universiti Putra Malaysia (UPM)",
+"rank": 4,
+"location": "Serdang, Selangor",
+"type": "Research University",
+"accredited": "246",
+"programs": "Engineering & Construction, Natural Sciences & Mathematics, Agriculture & Veterinary",
+"alt": "UPM, Selangor",
+"ranked": true
+},
+{
+"id": "universiti-teknologi-malaysia-utm",
+"name": "Universiti Teknologi Malaysia (UTM)",
+"rank": 5,
+"location": "Skudai, Johor",
+"type": "Research University",
+"accredited": "437",
+"programs": "Engineering & Construction, Education, Natural Sciences & Mathematics",
+"alt": "UTM, University of Technology Malaysia, Johor",
+"ranked": true
+},
+{
+"id": "universiti-teknologi-petronas-utp",
+"name": "Universiti Teknologi Petronas (UTP)",
+"rank": 6,
+"location": "Tronoh, Perak",
+"type": "Private University",
+"accredited": "102",
+"programs": "Engineering & Construction, Computing & IT, Natural Sciences & Mathematics",
+"alt": "UTP, Perak",
+"ranked": true
+},
+{
+"id": "taylor-s-university",
+"name": "Taylor's University",
+"rank": 7,
+"location": "Subang Jaya, Selangor",
+"type": "Private University",
+"accredited": "179",
+"programs": "Engineering & Construction, Business & Law, Services",
+"alt": "Selangor",
+"ranked": true
+},
+{
+"id": "ucsi-university",
+"name": "UCSI University",
+"rank": 8,
+"location": "Taman Connaught, Kuala Lumpur",
+"type": "Private University",
+"accredited": "223",
+"programs": "Engineering & Construction, Business & Law, Health & Welfare",
+"alt": "Kuala Lumpur",
+"ranked": true
+},
+{
+"id": "sunway-university",
+"name": "Sunway University",
+"rank": 9,
+"location": "Petaling Jaya, Selangor",
+"type": "Private University",
+"accredited": "113",
+"programs": "Business & Law, Computing & IT, Arts & Humanities",
+"alt": "Selangor",
+"ranked": true
+},
+{
+"id": "inti-international-university-nilai",
+"name": "Inti International University Nilai",
+"rank": 10,
+"location": "Negeri Sembilan",
+"type": "Private University",
+"accredited": "170",
+"programs": "Engineering & Construction, Business & Law, Computing & IT",
+"alt": "Negeri Sembilan",
+"ranked": true
+},
+{
+"id": "universiti-tenaga-nasional-uniten",
+"name": "Universiti Tenaga Nasional (UNITEN)",
+"rank": 11,
+"location": "Kajang, Selangor",
+"type": "Private University",
+"accredited": "128",
+"programs": "Engineering & Construction, Business & Law, Computing & IT",
+"alt": "UNITEN, Selangor",
+"ranked": true
+},
+{
+"id": "asia-pacific-university-of-technology-innovation-apu",
+"name": "Asia Pacific University of Technology & Innovation (APU)",
+"rank": 12,
+"location": "Bukit Jalil, Kuala Lumpur",
+"type": "Private University",
+"accredited": "120",
+"programs": "Computing & IT, Business & Law, Engineering & Construction",
+"alt": "APU, Kuala Lumpur",
+"ranked": true
+}
+],
+"steps": [
+{
+"tag": "Before you apply",
+"title": "Profile, shortlist and English test",
+"text": "A free consultation, a realistic shortlist, and an English test EMGS accepts. Check your passport: it must be valid for at least 18 months.",
+"note": "",
+"img": "jp-1",
+"alt": "A student talking with a counsellor"
+},
+{
+"tag": "Offer letter",
+"title": "Accept your place",
+"text": "We prepare transcripts, statement of purpose and references so the offer letter and your EMGS details match exactly.",
+"note": "",
+"img": "jp-2",
+"alt": "An envelope being handed over"
+},
+{
+"tag": "EMGS",
+"title": "Your institution applies, through EMGS",
+"text": "EMGS processes it with your health declaration and pre-arrival medical screening. Your institution signs a personal bond with the Immigration Department on your behalf.",
+"note": "",
+"img": "jp-3",
+"alt": "A passport on top of travel documents"
+},
+{
+"tag": "eVAL",
+"title": "Your Visa Approval Letter arrives",
+"text": "The eVAL is your permission to travel. No credibility interview is involved. We brief you on packing, arrival and campus life before you fly.",
+"note": "",
+"img": "jp-4",
+"alt": "The view from a plane window above the clouds"
+},
+{
+"tag": "Arrival",
+"title": "Selamat datang! Three things in week one",
+"text": "A post-arrival medical screening, health insurance bought in Malaysia, and the Student Pass endorsed in your passport. We help with housing and banking too.",
+"note": "",
+"img": "jp-5",
+"alt": "A traveller reading the departures board in an airport"
+},
+{
+"tag": "After graduation",
+"title": "A twelve-month Graduate Pass",
+"text": "A Long-Term Visit Pass after a bachelor's degree or higher, with part-time work in approved sectors. It needs a personal bond from a Malaysian citizen sponsor earning at least RM 1,500 a month.",
+"note": "Open to 32 nationalities. For Indian and Chinese nationals it is decided case by case and currently authorised until 31 December 2026. We confirm the current rule before you count on it.",
+"img": "jp-6",
+"alt": "A graduate in cap and gown"
+},
+{
+"tag": "Career",
+"title": "Employment Pass, then Permanent Residence",
+"text": "An employer-sponsored Employment Pass for long-term work, and later an Entry Permit for Permanent Residence once you are established.",
+"note": "",
+"img": "jp-7",
+"alt": "Two colleagues working at laptops in an office"
+}
+],
+"fund": [
+{
+"img": "fund-1",
+"title": "Scholarships",
+"sub": "Merit awards, bursaries and grants",
+"text": "We match strong profiles to institutional scholarships that can cover part or all of tuition, and coach you through the essays that win them.",
+"bullets": [
+"Merit and need-based awards",
+"Essay and interview coaching",
+"Deadlines tracked for you"
+]
+},
+{
+"img": "fund-2",
+"title": "Education loans",
+"sub": "With or without collateral",
+"text": "Direct tie-ups with national banks and private lenders cover tuition and accommodation, with the paperwork handled alongside your offer letter.",
+"bullets": [
+"Collateral and non-collateral",
+"Tuition plus living costs",
+"10 lending partners"
+]
+},
+{
+"img": "fund-3",
+"title": "Vacation work",
+"sub": "Earning in Malaysia, the real rules",
+"text": "No work during term. In semester breaks longer than seven days you may work up to 20 hours a week in restaurants, petrol kiosks, mini markets or hotels, with prior Immigration Department approval.",
+"bullets": [
+"Up to 20 hours a week in breaks",
+"Approved sectors only",
+"Your institution applies for permission"
+]
+}
+],
+"life": [
+{
+"img": "l-nasi",
+"title": "Nasi kerabu",
+"sub": "Kelantan"
+},
+{
+"img": "l-art",
+"title": "Street art",
+"sub": "George Town, Penang"
+},
+{
+"img": "l-houses",
+"title": "Peranakan shophouses",
+"sub": "Heritage streets"
+},
+{
+"img": "l-petaling",
+"title": "Night market",
+"sub": "Kuala Lumpur"
+},
+{
+"img": "l-satay",
+"title": "Satay",
+"sub": "RM 1–2 a stick"
+},
+{
+"img": "l-night",
+"title": "Late nights",
+"sub": "Kuala Lumpur"
+},
+{
+"img": "l-lanterns",
+"title": "Lantern season",
+"sub": "Chinese New Year"
+},
+{
+"img": "l-murugan",
+"title": "Batu Caves",
+"sub": "Selangor"
+},
+{
+"img": "l-laksa",
+"title": "Curry laksa",
+"sub": "RM 8–12"
+},
+{
+"img": "l-spread",
+"title": "Hawker spread",
+"sub": "Share everything"
+},
+{
+"img": "l-theanhou",
+"title": "Thean Hou Temple",
+"sub": "Kuala Lumpur"
+},
+{
+"img": "l-jonker",
+"title": "Lantern lanes",
+"sub": "Melaka"
+},
+{
+"img": "l-dishes",
+"title": "Lunch, Malaysian style",
+"sub": "Rice, sambal and sides"
+},
+{
+"img": "l-temple",
+"title": "Kek Lok Si",
+"sub": "Penang"
+},
+{
+"img": "l-redlant",
+"title": "Red lanterns",
+"sub": "Every new year"
+}
+],
+"phrases": [
+{
+"my": "Selamat datang",
+"en": "Welcome",
+"pr": "suh-lah-mat dah-tahng",
+"tip": "On every airport sign and shop door."
+},
+{
+"my": "Terima kasih",
+"en": "Thank you",
+"pr": "tuh-ree-mah kah-seh",
+"tip": "Answer with sama-sama, you're welcome."
+},
+{
+"my": "Apa khabar?",
+"en": "How are you?",
+"pr": "ah-pah kah-bar",
+"tip": "Reply khabar baik, I'm well."
+},
+{
+"my": "Berapa harga?",
+"en": "How much is it?",
+"pr": "buh-rah-pah har-gah",
+"tip": "Your most useful phrase at a night market."
+},
+{
+"my": "Jom makan!",
+"en": "Let's eat!",
+"pr": "jom mah-kahn",
+"tip": "The start of every good evening in Malaysia."
+},
+{
+"my": "Boleh",
+"en": "Can / sure",
+"pr": "boh-leh",
+"tip": "Malaysian English turns it into “can, lah”."
+},
+{
+"my": "Tapau",
+"en": "Takeaway, please",
+"pr": "tah-pow",
+"tip": "Borrowed from Cantonese; every stall knows it."
+},
+{
+"my": "Selamat pagi",
+"en": "Good morning",
+"pr": "suh-lah-mat pah-gee",
+"tip": "For your first 8 a.m. lecture."
+}
+],
+"fest": [
+{
+"img": "f-cny",
+"when": "January or February",
+"title": "Chinese New Year",
+"text": "Lanterns, open houses and lion dances across every city."
+},
+{
+"img": "f-thaipusam",
+"when": "January or February",
+"title": "Thaipusam",
+"text": "Hundreds of thousands climb the 272 steps of Batu Caves."
+},
+{
+"img": "f-raya",
+"when": "Islamic calendar",
+"title": "Hari Raya Aidilfitri",
+"text": "The end of Ramadan, and open houses where everyone is welcome."
+},
+{
+"img": "f-merdeka",
+"when": "31 August",
+"title": "Merdeka Day",
+"text": "Independence Day, with fireworks over Kuala Lumpur."
+}
+],
+"escapes": [
+{
+"img": "e-skybridge",
+"title": "Langkawi Sky Bridge",
+"sub": "1 hr flight from KL"
+},
+{
+"img": "e-redang",
+"title": "Redang Island",
+"sub": "Flight and a boat"
+},
+{
+"img": "e-kinabalu",
+"title": "Mount Kinabalu",
+"sub": "Sabah, Malaysia's highest peak"
+},
+{
+"img": "e-tea",
+"title": "Cameron Highlands",
+"sub": "Cool tea country"
+},
+{
+"img": "e-orangutan",
+"title": "Orangutans",
+"sub": "Malaysian Borneo"
+},
+{
+"img": "e-boats",
+"title": "Perhentian Islands",
+"sub": "Flight and a boat"
+},
+{
+"img": "e-cablecar",
+"title": "Langkawi Cable Car",
+"sub": "Over the Machinchang range"
+},
+{
+"img": "e-islands",
+"title": "Islands off Sabah",
+"sub": "Snorkelling and diving"
+},
+{
+"img": "e-canopy",
+"title": "Canopy walks",
+"sub": "Rainforest trails"
+},
+{
+"img": "e-beach",
+"title": "White-sand beaches",
+"sub": "Clear, warm water"
+},
+{
+"img": "e-falls",
+"title": "Rainforest waterfalls",
+"sub": "Weekend hikes"
+},
+{
+"img": "e-sunset",
+"title": "Langkawi sunsets",
+"sub": "The Andaman Sea"
+}
+],
+"partners": [
+{
+"file": "auxilo.jpg",
+"name": "Auxilo"
+},
+{
+"file": "avanse.jpg",
+"name": "Avanse"
+},
+{
+"file": "axis.jpg",
+"name": "Axis Bank"
+},
+{
+"file": "hdfc-credila.jpg",
+"name": "HDFC Credila"
+},
+{
+"file": "icici.png",
+"name": "ICICI Bank"
+},
+{
+"file": "idfc.jpg",
+"name": "IDFC First Bank"
+},
+{
+"file": "incred.jpg",
+"name": "InCred"
+},
+{
+"file": "mpower.jpg",
+"name": "MPOWER Financing"
+},
+{
+"file": "prodigy.jpg",
+"name": "Prodigy Finance"
+},
+{
+"file": "union.jpg",
+"name": "Union Bank of India"
+}
+],
+"voices": [
+{
+"quote": "My son has got the Pass for his higher studies at one of Malaysia's reputed universities. Despite his complicated profile, the team made this happen.",
+"name": "Ramana S.",
+"role": "Parent of a student, Malaysia",
+"mark": "Chennai"
+},
+{
+"quote": "Tutee Connect got my EMGS application and every supporting document exactly right. My Student Pass was approved on the very first attempt.",
+"name": "Priya K.",
+"role": "Master's student, Universiti Malaya",
+"mark": "Kuala Lumpur"
+},
+{
+"quote": "They didn't just help with the admission. The post-landing support for finding accommodation in Kuala Lumpur was a lifesaver.",
+"name": "Vishal M.",
+"role": "Undergraduate, Taylor's University",
+"mark": "Subang Jaya"
+},
+{
+"quote": "I had a previous visa refusal and was losing hope. My coordinator turned it around and guided me through the entire documentation process.",
+"name": "Sneha R.",
+"role": "Graduate student, UPM",
+"mark": "Serdang"
+},
+{
+"quote": "The non-collateral education loan assistance is genuine. They connected me directly with their banking partners and sorted my finances fast.",
+"name": "Rahul V.",
+"role": "Engineering, UTM",
+"mark": "Skudai"
+},
+{
+"quote": "Their consultation on the Graduate Pass and the Employment Pass pathway gave me the clarity I needed before flying out.",
+"name": "Anita D.",
+"role": "MBA candidate, Sunway University",
+"mark": "Petaling Jaya"
+},
+{
+"quote": "The counselling opened my eyes to universities I hadn't even considered. Now I'm loving my term in Penang.",
+"name": "Karthik N.",
+"role": "Computer Science, USM",
+"mark": "George Town"
+},
+{
+"quote": "From application essays to final pass prep, the whole journey felt personal. Highly recommended for anyone aiming for Malaysia.",
+"name": "Divya P.",
+"role": "Data Science, APU",
+"mark": "Bukit Jalil"
+},
+{
+"quote": "A graduate assistantship felt impossible, but with their profile-building strategy I got a full tuition waiver.",
+"name": "Siddharth J.",
+"role": "PhD student, UKM",
+"mark": "Bangi"
+}
+],
+"faq": [
+{
+"q": "What do I need to apply to study in Malaysia?",
+"a": "A passport valid for at least 18 months, your academic transcripts, and proof of English on the EMGS list: MUET, IELTS, TOEFL iBT, PTE Academic, Cambridge English or ELS. Attach the certificate to your application, or EMGS may not grant a pass for the full length of your course. Some postgraduate courses, MBAs in particular, also ask for a GMAT score or work experience.",
+"k": [
+"apply",
+"requirement",
+"need",
+"document",
+"passport",
+"admission",
+"eligib",
+"start",
+"gmat"
+],
+"short": "What do I need to apply?"
+},
+{
+"q": "How does the Student Pass process work?",
+"a": "Once you accept an offer, your institution lodges your application with EMGS, which issues the eVAL (Visa Approval Letter). You complete a health declaration and pre-arrival medical screening, and your institution signs a personal bond with the Immigration Department for you. After you land you take a second medical screening, buy health insurance in Malaysia, and Immigration endorses the Student Pass in your passport. There is no credibility interview.",
+"k": [
+"student pass",
+"visa",
+"emgs",
+"eval",
+"process",
+"permit",
+"immigration",
+"medical",
+"interview"
+],
+"short": "How does the Student Pass work?"
+},
+{
+"q": "Is the Duolingo English Test accepted?",
+"a": "Not for a Malaysian Student Pass. EMGS lists the tests it accepts, and Duolingo is not among them. Sitting the wrong test can cost you an intake, so we book one that is on the list.",
+"k": [
+"duolingo",
+"english",
+"ielts",
+"toefl",
+"pte",
+"muet",
+"test"
+],
+"short": "Is Duolingo accepted?"
+},
+{
+"q": "How much does it cost to study in Malaysia?",
+"a": "Public university tuition starts from about RM 14,000 a year; private universities and branch campuses cost more, and their tuition for international students carries 6% service tax. Living costs depend heavily on the city. Use the cost planner above for an estimate, and your counsellor will build an exact figure for your offer.",
+"k": [
+"cost",
+"fee",
+"tuition",
+"price",
+"expensive",
+"budget",
+"cheap",
+"money",
+"afford",
+"living"
+],
+"short": "How much does it cost?"
+},
+{
+"q": "Can I work while I study?",
+"a": "Not during term. You may work up to 20 hours a week during semester breaks longer than seven days, in restaurants, petrol kiosks, mini markets and hotels, and only with prior Immigration Department approval that your institution applies for.",
+"k": [
+"work",
+"job",
+"part-time",
+"part time",
+"earn",
+"salary",
+"wage"
+],
+"short": "Can I work while I study?"
+},
+{
+"q": "What is the Graduate Pass?",
+"a": "A Long-Term Visit Pass that lets you stay in Malaysia for twelve months after a bachelor's degree or higher, with part-time work in approved sectors and no employer sponsor. It is open to 32 nationalities and needs a personal bond signed by a Malaysian citizen sponsor earning at least RM 1,500 a month. For Indian and Chinese nationals it is decided case by case and is currently authorised until 31 December 2026, so we check the rule before you rely on it.",
+"k": [
+"graduate pass",
+"after graduat",
+"stay",
+"post-study",
+"post study",
+"after my degree",
+"pr ",
+"permanent",
+"employment pass"
+],
+"short": "What is the Graduate Pass?"
+},
+{
+"q": "Can my family come with me?",
+"a": "Postgraduate students may apply for Dependant Passes for a spouse, children, parents and parents-in-law. Undergraduates may only do so if they are citizens of one of 17 listed countries, and India is not currently one of them.",
+"k": [
+"family",
+"spouse",
+"dependant",
+"dependent",
+"child",
+"parent",
+"wife",
+"husband",
+"kids"
+],
+"short": "Can my family come?"
+},
+{
+"q": "Do you help with accommodation and arrival?",
+"a": "Yes. We work with student housing providers near your campus, run a pre-departure briefing on culture, academics, packing and immigration, and help in your first week with the medical screening, insurance, a bank account and a Touch 'n Go card.",
+"k": [
+"accommodation",
+"housing",
+"hostel",
+"arrival",
+"arrive",
+"airport",
+"landing",
+"bank",
+"stay where",
+"rent"
+],
+"short": "Help with housing and arrival?"
+}
+],
+"codes": [
+"AE +971",
+"AF +93",
+"AR +54",
+"AT +43",
+"AU +61",
+"BE +32",
+"BR +55",
+"CH +41",
+"CL +56",
+"CN +86",
+"CO +57",
+"DE +49",
+"DK +45",
+"DZ +213",
+"EG +20",
+"ES +34",
+"FI +358",
+"FR +33",
+"GR +30",
+"HU +36",
+"ID +62",
+"IE +353",
+"IN +91",
+"IR +98",
+"IT +39",
+"JP +81",
+"KE +254",
+"KR +82",
+"LK +94",
+"MA +212",
+"MM +95",
+"MX +52",
+"MY +60",
+"NG +234",
+"NL +31",
+"NO +47",
+"NZ +64",
+"PE +51",
+"PH +63",
+"PK +92",
+"PL +48",
+"PT +351",
+"QA +974",
+"RO +40",
+"RU/KZ +7",
+"SA +966",
+"SE +46",
+"SG +65",
+"TH +66",
+"TN +216",
+"TR +90",
+"TZ +255",
+"UA +380",
+"UG +256",
+"UK +44",
+"US/CA +1",
+"VE +58",
+"VN +84",
+"ZA +27"
+],
+"pois": [
+{
+"kind": "air",
+"name": "KLIA",
+"sub": "Kuala Lumpur International Airport",
+"mx": 154,
+"my": 333
+},
+{
+"kind": "city",
+"name": "George Town",
+"sub": "UNESCO old town",
+"mx": 60,
+"my": 151
+},
+{
+"kind": "isle",
+"name": "Langkawi",
+"sub": "Island escape",
+"mx": 24,
+"my": 87
+},
+{
+"kind": "peak",
+"name": "Cameron Highlands",
+"sub": "Tea country",
+"mx": 132,
+"my": 215
+},
+{
+"kind": "city",
+"name": "Putrajaya",
+"sub": "Federal government",
+"mx": 153,
+"my": 320
+},
+{
+"kind": "city",
+"name": "Melaka",
+"sub": "UNESCO heritage city",
+"mx": 192,
+"my": 371
+},
+{
+"kind": "uni",
+"name": "EduCity",
+"sub": "UK branch campuses",
+"mx": 286,
+"my": 423
+},
+{
+"kind": "city",
+"name": "Kuching",
+"sub": "Sarawak capital",
+"mx": 398,
+"my": 407
+},
+{
+"kind": "uni",
+"name": "Miri",
+"sub": "Curtin Malaysia",
+"mx": 647,
+"my": 212
+},
+{
+"kind": "city",
+"name": "Kota Kinabalu",
+"sub": "Sabah capital",
+"mx": 790,
+"my": 104
+},
+{
+"kind": "peak",
+"name": "Mount Kinabalu",
+"sub": "4,095 m",
+"mx": 823,
+"my": 92
+},
+{
+"kind": "isle",
+"name": "Perhentian",
+"sub": "Reefs",
+"mx": 236,
+"my": 118
+}
+]
+}

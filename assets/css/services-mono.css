@@ -1,0 +1,56 @@
+/* ===== What we do: glass monoliths ===== */
+.services .head { margin-bottom: clamp(10px, 2vw, 28px); }
+.mo-stage { position: relative; z-index: 1; height: clamp(440px, 62vh, 640px); }
+.mo-gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab;
+  /* the gallery fades into the section at both ends instead of stopping at a hard edge */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.mo-gl.grab { cursor: grabbing; } .mo-gl.pt { cursor: pointer; }
+
+/* hover box, pinned to the pillar under the pointer */
+.mo-tip { --c: #E9B949; position: absolute; z-index: 3; left: 0; top: 0; width: min(270px, 70vw); display: grid; gap: 6px; padding: 16px 18px 15px; border-radius: 18px; background: rgba(28,4,12,.78); -webkit-backdrop-filter: blur(14px) saturate(1.3); backdrop-filter: blur(14px) saturate(1.3); box-shadow: inset 0 0 0 1px rgba(255,255,255,.16), 0 30px 60px -24px rgba(0,0,0,.85); pointer-events: none; translate: -50% -50%; opacity: 0; scale: .92; transition: opacity .2s, scale .35s var(--ease); }
+.mo-tip.on { opacity: 1; scale: 1; }
+.mo-tip::before { content: ""; position: absolute; left: 18px; right: 18px; top: 0; height: 3px; border-radius: 0 0 3px 3px; background: var(--c); }
+.mo-tip .tp-n { font: 700 11px ui-monospace, Menlo, monospace; letter-spacing: .14em; color: #E9B949; }
+.mo-tip b { font-family: var(--serif); font-weight: 400; font-size: 23px; line-height: 1.08; letter-spacing: -.01em; }
+.mo-tip small { font-size: 10.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #E9B949; line-height: 1.4; }
+.mo-tip p { font-size: 13.5px; line-height: 1.55; opacity: .86; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.mo-tip .tp-go { font-size: 12px; font-weight: 800; color: #E9B949; margin-top: 2px; }
+
+/* card that opens on click */
+.mo-card { --c: #E9B949; position: absolute; z-index: 4; right: var(--pad); top: 50%; width: min(380px, 30vw); display: grid; gap: 12px; justify-items: start; padding: 24px; border-radius: 26px; background: rgba(28,4,12,.72); -webkit-backdrop-filter: blur(18px) saturate(1.3); backdrop-filter: blur(18px) saturate(1.3); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14), 0 40px 80px -30px #000; opacity: 0; translate: 30px -50%; pointer-events: none; transition: opacity .5s, translate .8s var(--ease); }
+.mo-card.on { opacity: 1; translate: 0 -50%; pointer-events: auto; }
+.mo-card::before { content: ""; position: absolute; left: 24px; right: 24px; top: 0; height: 3px; border-radius: 0 0 3px 3px; background: var(--c); }
+.mo-card > * { position: relative; }
+.mo-card .cd-n { font: 300 58px/.9 var(--serif); color: #E9B949; }
+.mo-card small { font-size: 11.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: #E9B949; }
+.mo-card h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 2.4vw, 38px); line-height: 1.05; letter-spacing: -.02em; }
+.mo-card p { font-size: 15px; line-height: 1.6; opacity: .86; }
+.mo-card .cd-nav { display: flex; align-items: center; gap: 8px; width: 100%; margin-top: 2px; }
+.mo-card .cd-nav .btn { margin-right: auto; }
+.mo-card .rbtn { width: 44px; height: 44px; }
+.mo-card .cd-x { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: rgba(255,255,255,.1); color: #fff; font-size: 15px; }
+
+/* chips */
+.mo-chips { position: relative; z-index: 2; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 6px; }
+.mo-chips button { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 13px; border: 0; border-radius: 999px; background: rgba(0,0,0,.25); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); color: #fff; font-size: 12.5px; font-weight: 700; transition: background-color .3s, color .3s; }
+.mo-chips button b { font: 700 10.5px ui-monospace, Menlo, monospace; color: #E9B949; }
+.mo-chips button:hover, .mo-chips button[aria-selected="true"] { background: #E9B949; color: #2A0812; }
+.mo-chips button:hover b, .mo-chips button[aria-selected="true"] b { color: #2A0812; }
+
+/* no WebGL: the card simply sits in place */
+.mo-nogl .mo-stage { height: auto; }
+.mo-nogl .mo-gl, .mo-nogl .mo-tip { display: none; }
+.mo-nogl .mo-card { position: relative; right: auto; top: auto; translate: none; width: auto; max-width: 620px; margin: 0 auto 20px; }
+
+@media (max-width: 1000px) {
+  .mo-stage { height: clamp(420px, 70svh, 560px); }
+  .mo-card { top: auto; bottom: 14px; left: var(--pad); right: var(--pad); width: auto; padding: 18px; gap: 8px; translate: 0 30px; }
+  .mo-card.on { translate: 0 0; }
+  .mo-card p { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 14px; }
+  .mo-card .cd-n { font-size: 40px; }
+  .mo-chips { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
+  .mo-chips button { flex: none; }
+}
+
+/* resting the mouse near the stage's far left or right walks the gallery */
+.mo-gl.edge-l:not(.pt) { cursor: w-resize; } .mo-gl.edge-r:not(.pt) { cursor: e-resize; }

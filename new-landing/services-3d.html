@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What we do 3D options | Tutee Connect</title>
+<link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="./assets/css/services-lab.css">
+<link rel="stylesheet" href="./assets/css/services-3d.css">
+<script src="./assets/vendor/gsap.min.js" defer></script>
+<script src="./assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="./assets/js/svc-data.js" defer></script>
+<script type="module" src="./assets/js/services-3d.js"></script>
+</head>
+<body class="sl">
+
+<header class="sl-nav">
+  <a class="nav-logo" href="./index.html"><img src="./assets/img/logo/icon.png" alt="" width="40" height="40"><span><b>Tutee Connect</b><small>What we do · 3D options</small></span></a>
+  <nav class="sl-jump" aria-label="Options">
+    <a href="#a"><b>A</b> Photo helix</a><a href="#b"><b>B</b> Glass monoliths</a><a href="#c"><b>C</b> The services book</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ A · PHOTO HELIX ============ -->
+<section class="sl-sec s3 hx" id="a" aria-labelledby="hx-title" data-hx>
+  <p class="sl-tag">Option A · Photo helix</p>
+  <canvas class="s3-gl" data-gl aria-label="The nine services as photo panels on a spiral. Use the buttons below to choose one."></canvas>
+  <div class="wrap s3-head"><p class="kick">03 · What we do</p><h2 class="h2" id="hx-title">Nine services, <em>one spiral.</em></h2><p class="lead">Scroll and the spiral turns with you. Drag it, point at a panel to wake it, and click to bring it forward.</p></div>
+  <aside class="s3-card" data-card aria-live="polite"></aside>
+  <div class="s3-foot"><div class="wrap"><div class="s3-chips" data-chips></div></div></div>
+</section>
+
+<!-- ============ B · GLASS MONOLITHS ============ -->
+<section class="sl-sec s3 mo" id="b" aria-labelledby="mo-title" data-mo>
+  <p class="sl-tag">Option B · Glass monoliths</p>
+  <canvas class="s3-gl" data-gl aria-label="The nine services as glass monoliths. Use the buttons below to choose one."></canvas>
+  <div class="wrap s3-head"><p class="kick">03 · What we do</p><h2 class="h2" id="mo-title">Nine pillars <em>to stand on.</em></h2><p class="lead">Drag to walk along the gallery. Point at a monolith to light it, click to call it forward.</p></div>
+  <aside class="s3-card" data-card aria-live="polite"></aside>
+  <div class="s3-foot"><div class="wrap"><div class="s3-chips" data-chips></div></div></div>
+</section>
+
+<!-- ============ C · THE SERVICES BOOK ============ -->
+<section class="sl-sec s3 bk" id="c" aria-labelledby="bk-title" data-bk>
+  <p class="sl-tag">Option C · The services book</p>
+  <canvas class="s3-gl" data-gl aria-label="A 3D book with one service on each spread. Use the buttons below to turn the pages."></canvas>
+  <div class="wrap s3-head"><p class="kick">03 · What we do</p><h2 class="h2" id="bk-title">Our services, <em>bound in one book.</em></h2><p class="lead">Drag a page to turn it, click the right page for the next, or jump to a chapter below.</p></div>
+  <div class="s3-foot"><div class="wrap bk-foot"><a class="btn btn--sun btn--sm" data-bk-cta href="./index.html#begin">Book a consultation →</a><div class="s3-chips" data-chips></div></div></div>
+</section>
+
+</main>
+<footer class="sl-foot"><p>Pick one and it replaces the current carousel on the main page. Photography via Unsplash.</p></footer>
+</body>
+</html>

@@ -1,0 +1,121 @@
+/* ---------- The phone layer (assets/js/phone.js) ----------
+   How the page adapts to a phone, following the Finland page's approach:
+   - one action bar at the bottom (Ask AI · Free evaluation · WhatsApp) takes the place of the floating buttons and the
+     section dock once the first screen has gone, and steps aside again at the enquiry form;
+   - hints are worded for touch where there is no hover (.t-fine / .t-touch);
+   - the top bar is fitted to a narrow screen, tall stacks of cards are tightened, and typing never zooms the page. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+.t-touch { display: none; }
+@media (hover: none) { .t-fine { display: none; } .t-touch { display: inline; } .foot-sky .foot-word.is-live::after { content: none; } }
+.mbar { display: none; }
+
+/* the Student Pass file: the page controls stay inside their card at any width */
+.fl-info, .fl-body { grid-template-columns: minmax(0, 1fr); }
+.fl-pips { min-width: 0; }
+
+/* a phone upright, or held sideways (wide but very short): the action bar replaces the dock and the floating buttons */
+@media (max-width: 760px), (max-width: 960px) and (max-height: 520px) and (orientation: landscape) {
+  a, button, [role="button"], label, summary { -webkit-tap-highlight-color: transparent; }
+
+  /* ----- the action bar ----- */
+  .dock { display: none !important; }
+  .mbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 97; display: flex; align-items: center; gap: 8px;
+    padding: 9px 12px calc(9px + var(--nr-h) + env(safe-area-inset-bottom, 0px)); background: rgba(9,13,40,.95);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 -18px 40px -22px rgba(0,0,0,.75);
+    transform: translateY(105%); visibility: hidden; transition: transform .45s var(--ease), visibility 0s .45s, padding-bottom .5s var(--ease); }
+  .mbar.is-on { transform: none; visibility: visible; transition: transform .45s var(--ease), visibility 0s, padding-bottom .5s var(--ease); }
+  .mbar-ai, .mbar-cta, .mbar-wa { flex: none; height: 46px; border: 0; border-radius: 999px; font-family: var(--sans); cursor: pointer; text-decoration: none; }
+  .mbar-ai { display: inline-flex; align-items: center; gap: 8px; padding: 0 14px 0 6px; background: rgba(255,255,255,.1); box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); color: #fff; font-size: 13.5px; font-weight: 700; white-space: nowrap; }
+  .mbar-orb { position: relative; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: conic-gradient(#FFCC00, #FF4D6D, #6C7BFF, #2EE6C5, #FFCC00); }
+  .mbar-orb::after { content: ""; position: absolute; inset: 2.5px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #2A3590, #0B1030 70%); }
+  .mbar-orb svg { position: relative; z-index: 1; width: 16px; height: 16px; color: #fff; }
+  .mbar-cta { flex: 1 1 auto; min-width: 0; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 14px; background: var(--sun, #FFCC00); color: #0A1A5C; font-size: 15px; font-weight: 800; white-space: nowrap; box-shadow: 0 10px 24px -12px rgba(255,204,0,.8); }
+  .mbar-cta:active, .mbar-ai:active, .mbar-wa:active { transform: scale(.97); }
+  .mbar-wa { display: grid; place-items: center; width: 46px; background: #25D366; color: #fff; }
+  .mbar-wa svg { width: 24px; height: 24px; }
+  .mbar :focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+  /* the floating buttons give way to the bar, to the open menu and to the keyboard; the AI button waits for the first scroll */
+  .wa { transition: transform .4s var(--ease), translate .5s var(--ease), opacity .3s, visibility 0s; }
+  .ta-fab { transition: translate .5s var(--ease), opacity .3s, visibility 0s; }
+  html.mbar-on .wa, html.mbar-on .ta-fab, html.menu-on .wa, html.menu-on .ta-fab, html.kb-on .wa, html.kb-on .ta-fab, html:not(.past-hero) .ta-fab {
+    opacity: 0; visibility: hidden; pointer-events: none; transition: transform .4s var(--ease), translate .5s var(--ease), opacity .3s, visibility 0s .3s; }
+  /* while the keyboard is up, nothing is fixed to the bottom edge */
+  html.kb-on .mbar { transform: translateY(105%); visibility: hidden; }
+  html.kb-on .nr { transform: translateY(105%); animation: none; }
+}
+
+@media (max-width: 760px) {
+  /* ----- the hero's caption sits clear of the news bar ----- */
+  .hg-cap { bottom: calc(64px + var(--nr-h)); max-width: calc(100vw - 2 * var(--pad) - 70px); overflow: hidden; text-overflow: ellipsis; }
+
+  /* ----- Bringing your family: four compact rows, not four tall cards ----- */
+  .fh-stage { gap: 26px; padding: 76px var(--pad) 56px; }
+  .fh-row { gap: 10px; }
+  .fh-card { min-height: 0; padding: 8px; }
+  .fh-in { display: grid; grid-template-columns: 42px minmax(0, 1fr); column-gap: 16px; align-content: center; align-items: center; justify-items: start; padding: 18px 18px 18px 16px; text-align: left; }
+  .fh-in svg { grid-row: 1 / span 2; width: 38px; height: 38px; margin: 0; }
+  .fh-in h3 { margin: 0 0 6px; font-size: 19px; }
+  .fh-in p { max-width: none; font-size: 14.5px; line-height: 1.45; }
+
+  /* ----- Questions: shorter tiles, so all eight are a short scroll ----- */
+  .faq .fq-q, .faq .fq-tile.is-open .fq-q { min-height: 128px; padding: 16px 66px 16px 18px; gap: 10px; }
+  .faq .fq-n { font-size: 32px; -webkit-text-stroke-width: 1.2px; }
+  .faq .fq-ic { display: none; }
+  .faq .fq-t, .faq .fq-tile.is-wide .fq-t { max-width: none; font-size: 19px; }
+  .faq .fq-tile.is-open .fq-t { font-size: 22px; }
+  .faq .fq-go { right: 16px; bottom: 16px; width: 40px; height: 40px; }
+  .faq .fq-a { padding: 18px; gap: 16px; }
+  .faq .fq-a p { font-size: 16px; }
+
+  /* ----- the Student Pass file ----- */
+  .fl-nav { gap: 8px; }
+  .fl-nav .rbtn { flex: none; width: 46px; height: 46px; }
+  .fl-pips { flex: 1 1 auto; justify-content: center; gap: 4px; }
+  .fl-pips button { position: relative; width: 14px; }
+  .fl-pips button.on { width: 26px; }
+  .fl-pips button::after { content: ""; position: absolute; inset: -14px -2px; }
+
+
+  /* ----- Life in Malaysia: the photo wall becomes one row you swipe, with every photo in it ----- */
+  .gal { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; padding: 6px var(--pad) 12px; scroll-padding-inline: var(--pad); }
+  .gal::-webkit-scrollbar { display: none; }
+  .gal-col, .gal-col:nth-child(3), .gal-col:nth-child(5) { display: contents; }
+  .gal .gal-col .gi { flex: none; width: min(64vw, 270px); aspect-ratio: 4 / 5 !important; margin: 0; scroll-snap-align: center; }
+
+  /* ----- the news bar ----- */
+  .nr-x { width: 32px; height: 32px; }
+
+  /* ----- typing: 16px fields never make the phone zoom in ----- */
+  .ta-in, .dirpop .sel select { font-size: 16px; }
+}
+
+/* ----- the top bar on a narrow screen: the wordmark, the clock and the menu all fit ----- */
+@media (max-width: 479px) {
+  .nav { padding-inline: 14px; column-gap: 10px; }
+  .nav-act { gap: 8px; }
+  .nav.is-bar .nav-kl .flag { display: none; }
+  .nav.is-bar .nav-kl { padding-inline: 12px; }
+  .nav-menu { flex: none; }
+}
+@media (max-width: 349px) {
+  .nav.is-bar .nav-kl { display: none; }
+  .mbar-ai { padding: 0 6px; } .mbar-ai-l { display: none; }
+  .mbar-cta { font-size: 14px; }
+}
+
+/* a short phone: the photo caption would sit on the hero's buttons, so it is left out */
+@media (max-width: 760px) and (max-height: 700px) { .hg-cap { display: none; } }
+
+/* a phone held sideways: fixed bars stay slim */
+@media (max-height: 520px) and (orientation: landscape) and (max-width: 960px) {
+  /* the chat fills the screen, as it does on an upright phone: the desktop panel would be a sliver here */
+  .ta-panel { inset: 0; width: auto; height: auto; border-radius: 0; translate: none; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .ta.is-open .ta-fab { opacity: 0; pointer-events: none; }
+  .hg-cap { display: none; }
+  .mbar { padding-top: 6px; padding-inline: max(12px, env(safe-area-inset-left, 0px)) max(12px, env(safe-area-inset-right, 0px)); }
+  .mbar-cta { flex: 0 1 320px; margin-inline: auto; }
+  .mbar-ai, .mbar-cta, .mbar-wa { height: 40px; }
+  .mbar-wa { width: 40px; }
+}
+@media (prefers-reduced-motion: reduce) { .mbar, .wa, .ta-fab { transition: none !important; } }

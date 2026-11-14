@@ -1,0 +1,83 @@
+/* ===== Course finder: home screen =====
+   Each field is an app whose badge counts the institutions teaching it; tapping one zooms it open from its icon.
+   The black pill at the top morphs into search across all 391 institutions. */
+.courses .hs { --grot: "Bricolage Grotesque", var(--sans); --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; --keep: #12A150; --ink: #0B1030; margin-bottom: 26px; }
+.courses .hs .sw-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.courses .hs .sw-chips span { padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.courses .hs :focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+
+.hs { position: relative; height: clamp(620px, 82vh, 760px); border-radius: 44px; overflow: hidden; color: #fff; background: #1A1446; box-shadow: 0 0 0 10px #0E0B22, 0 0 0 11px #3A3360, 0 60px 100px -50px rgba(14,11,34,.8); isolation: isolate; }
+.hs-wall { position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse 60% 50% at 20% 10%, #FF6A88, transparent 70%), radial-gradient(ellipse 60% 60% at 90% 30%, #6A5CFF, transparent 70%), radial-gradient(ellipse 80% 60% at 50% 110%, #FFB347, transparent 70%), #2B1A6B; }
+.hs-wall i { position: absolute; border-radius: 50%; filter: blur(40px); opacity: .55; }
+.hs-wall i:nth-child(1) { width: 40%; aspect-ratio: 1; left: -8%; top: 30%; background: #FF4F8B; }
+.hs-wall i:nth-child(2) { width: 34%; aspect-ratio: 1; right: -6%; top: -10%; background: #3BD4FF; }
+.hs-wall i:nth-child(3) { width: 30%; aspect-ratio: 1; left: 40%; bottom: -12%; background: #FFE14D; }
+.hs-status { position: absolute; z-index: 3; top: 18px; left: 34px; right: 34px; display: flex; justify-content: space-between; align-items: center; font: 700 15px var(--grot); }
+.hs-status span { display: flex; gap: 8px; } .hs-status svg { fill: currentColor; }
+.hs-island { position: absolute; z-index: 6; top: 12px; left: 50%; translate: -50% 0; width: 230px; height: 38px; border-radius: 22px; background: #000; box-shadow: 0 10px 30px -10px rgba(0,0,0,.7); overflow: hidden; }
+.is-pill { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; height: 38px; border: 0; background: none; color: #fff; font: 700 13.5px var(--grot); }
+.is-dot { width: 9px; height: 9px; border-radius: 50%; background: #3DFF8B; box-shadow: 0 0 10px #3DFF8B; animation: isp 1.6s ease-in-out infinite; }
+@keyframes isp { 50% { opacity: .35; } }
+.is-panel { display: none; padding: 4px 14px 14px; }
+.hs-island.open .is-pill { display: none; } .hs-island.open .is-panel { display: grid; gap: 10px; }
+.is-search { display: flex; align-items: center; gap: 10px; height: 46px; padding: 0 6px 0 14px; border-radius: 16px; background: #1C1C1E; color: #9A9AA3; }
+.is-search input { flex: 1; min-width: 0; height: 100%; border: 0; background: none; color: #fff; font: 500 16px var(--sans); outline: none; }
+.is-x { width: 34px; height: 34px; border: 0; border-radius: 50%; background: #2C2C2E; color: #fff; }
+.is-res { display: grid; gap: 6px; max-height: 300px; overflow-y: auto; }
+.is-res li button { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; align-items: center; gap: 12px; width: 100%; padding: 8px; border: 0; border-radius: 14px; background: #1C1C1E; color: #fff; text-align: left; }
+.is-res li button:hover { background: #2C2C2E; }
+.is-res .av { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--sun); color: var(--navy); font: 800 13px var(--grot); }
+.is-res b { display: block; font-size: 14px; line-height: 1.25; } .is-res small { font-size: 12px; color: #9A9AA3; }
+.is-res .go { font-size: 18px; color: #9A9AA3; }
+.is-res .msg { padding: 10px 6px; font-size: 13.5px; color: #9A9AA3; }
+.hs-grid { position: absolute; z-index: 1; top: 92px; left: 0; right: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(22px, 3.4vw, 40px) clamp(10px, 2vw, 24px); width: min(820px, 100%); margin: 0 auto; padding-inline: clamp(18px, 4vw, 48px); }
+.app { display: grid; justify-items: center; gap: 9px; padding: 0; border: 0; background: none; color: #fff; text-align: center; }
+.app-ic { --c: #C8102E; position: relative; display: grid; place-items: center; width: clamp(66px, 8vw, 92px); aspect-ratio: 1; border-radius: 26%; background: linear-gradient(160deg, color-mix(in srgb, var(--c) 55%, #fff) -20%, var(--c) 55%, color-mix(in srgb, var(--c) 70%, #000)); box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 14px 26px -12px rgba(0,0,0,.6); transition: scale .35s var(--ease), rotate .35s var(--ease); }
+.app-ic svg { width: 46%; height: 46%; }
+.app:hover .app-ic { scale: 1.08; rotate: -3deg; }
+.app:active .app-ic { scale: .92; }
+.app-badge { position: absolute; top: -8px; right: -10px; display: grid; place-items: center; min-width: 26px; height: 26px; padding: 0 7px; border-radius: 999px; background: #FF3B30; color: #fff; font: 700 13px var(--grot); box-shadow: 0 0 0 2px rgba(0,0,0,.08); }
+.app-nm { font: 600 clamp(11.5px, 1.1vw, 13.5px) / 1.2 var(--sans); text-shadow: 0 1px 6px rgba(0,0,0,.45); max-width: 13ch; }
+.hs-dock { position: absolute; z-index: 2; left: 50%; bottom: 18px; translate: -50% 0; display: flex; align-items: flex-end; gap: 14px; padding: 12px 16px; border-radius: 30px; background: rgba(255,255,255,.18); -webkit-backdrop-filter: blur(24px) saturate(1.4); backdrop-filter: blur(24px) saturate(1.4); box-shadow: inset 0 0 0 1px rgba(255,255,255,.25); }
+.hs-dock .app-ic { width: clamp(54px, 6vw, 66px); transition: width .25s var(--ease), translate .25s var(--ease); transform-origin: 50% 100%; }
+/* dock labels appear above the icon only on hover or keyboard focus */
+.hs-dock .app { position: relative; --lift: 12px; }
+.hs-dock .app-nm { position: absolute; left: 50%; bottom: calc(100% + var(--lift)); max-width: none; padding: 6px 11px; border-radius: 10px; background: rgba(18,12,44,.88); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 10px 24px -12px rgba(0,0,0,.7); font: 700 12.5px / 1.2 var(--sans); white-space: nowrap; text-shadow: none; opacity: 0; translate: -50% 6px; pointer-events: none; transition: opacity .2s, translate .3s var(--ease); }
+.hs-dock .app-nm::after { content: ""; position: absolute; left: 50%; top: 100%; margin-left: -5px; border: 5px solid transparent; border-top-color: rgba(18,12,44,.88); }
+.hs-dock .app:hover .app-nm, .hs-dock .app:focus-visible .app-nm { opacity: 1; translate: -50% 0; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) { .hs-dock .app { --lift: 46px; } }
+.hs-dock .app:hover .app-ic { rotate: 0deg; }
+.hs-app { position: absolute; z-index: 5; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; background: #F2F2F7; color: var(--ink); border-radius: 44px; }
+.ha-scroll { position: absolute; inset: 0; overflow-y: auto; padding-bottom: 60px; }
+.ha-head { --c: #C8102E; position: relative; padding: 68px clamp(20px, 4vw, 44px) 26px; background: linear-gradient(160deg, color-mix(in srgb, var(--c) 70%, #fff) -30%, var(--c) 60%); color: #fff; }
+.ha-head small { font: 700 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; opacity: .85; }
+.ha-head h3 { margin-top: 6px; font: 800 clamp(34px, 4.6vw, 64px) / .92 var(--grot); letter-spacing: -.04em; text-wrap: balance; }
+.ha-head p { margin-top: 10px; font-size: 15px; opacity: .9; }
+.ha-head .ha-count { position: absolute; right: clamp(20px, 4vw, 44px); bottom: 20px; font: 800 clamp(60px, 9vw, 120px) / .8 var(--grot); letter-spacing: -.05em; opacity: .95; }
+.ha-body { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 18px; padding: 20px clamp(16px, 4vw, 44px); }
+.ha-label { font: 700 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: #6B6B76; margin-bottom: 8px; }
+.ha-notes { display: grid; gap: 10px; }
+.note { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 20px; background: rgba(255,255,255,.92); box-shadow: 0 10px 24px -16px rgba(0,0,0,.35); }
+.note .av { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--c, var(--navy)); color: #fff; font: 800 14px var(--grot); }
+.note .av.no { background: #E5E5EA; color: #6B6B76; font-size: 11px; }
+.note b { display: block; font-size: 14.5px; line-height: 1.25; } .note small { font-size: 12.5px; color: #6B6B76; }
+.note .add { width: 38px; height: 38px; border: 0; border-radius: 50%; background: #E9E9EF; color: var(--ink); font-size: 20px; font-weight: 700; transition: background-color .3s, color .3s; }
+.note .add[aria-pressed="true"] { background: var(--keep); color: #fff; }
+.wdg { display: grid; gap: 10px; padding: 16px; border-radius: 24px; background: #fff; box-shadow: 0 10px 24px -16px rgba(0,0,0,.35); }
+.wdg + .wdg { margin-top: 14px; }
+.wdg-bar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; font-size: 13px; font-weight: 700; }
+.wdg-bar i { grid-column: 1 / -1; display: block; height: 8px; border-radius: 8px; background: var(--c); transform-origin: 0 50%; }
+.wdg-big { font: 800 44px / .9 var(--grot); letter-spacing: -.04em; color: var(--c); }
+.wdg a { font-weight: 700; font-size: 14px; }
+.ha-home { position: absolute; z-index: 2; left: 50%; bottom: 10px; translate: -50% 0; width: 150px; height: 26px; border: 0; background: none; }
+.ha-home::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 5px; margin-top: -2.5px; border-radius: 5px; background: rgba(0,0,0,.5); }
+.ha-close { position: absolute; z-index: 2; top: 18px; right: 22px; height: 36px; padding: 0 14px; border: 0; border-radius: 999px; background: rgba(0,0,0,.25); color: #fff; font-weight: 700; font-size: 13.5px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+@media (max-width: 760px) {
+  .hs { height: 720px; border-radius: 36px; box-shadow: 0 0 0 6px #0E0B22, 0 40px 70px -40px rgba(14,11,34,.8); }
+  .hs-app { border-radius: 36px; }
+  .hs-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); top: 84px; }
+  .hs-island { width: 190px; }
+  .ha-body { grid-template-columns: minmax(0, 1fr); }
+  .ha-head .ha-count { position: static; margin-top: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .is-dot { animation: none; } }

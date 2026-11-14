@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Malaysia section concepts | Tutee Connect</title>
+<link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="./assets/css/concepts.css">
+<script src="./assets/vendor/gsap.min.js" defer></script>
+<script src="./assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="./assets/vendor/Flip.min.js" defer></script>
+<script src="./assets/vendor/CustomEase.min.js" defer></script>
+<script src="./assets/vendor/MotionPathPlugin.min.js" defer></script>
+<script src="./assets/vendor/DrawSVGPlugin.min.js" defer></script>
+<script src="./assets/js/concepts-data.js" defer></script>
+<script src="./assets/js/concepts.js" defer></script>
+<script type="module" src="./assets/js/concepts-3d.js"></script>
+</head>
+<body class="cx">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.35" result="m"/><feComposite in="SourceGraphic" in2="m" operator="in" result="c"/><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="9" result="w"/><feDisplacementMap in="c" in2="w" scale="2.4"/></filter>
+</svg>
+
+<header class="cx-nav">
+  <a class="nav-logo" href="./index.html"><img src="./assets/img/logo/icon.png" alt="" width="40" height="40"><span><b>Tutee Connect</b><small>Section concepts</small></span></a>
+  <nav class="cx-jump" aria-label="Concepts">
+    <span class="cx-g">Destinations</span><a href="#d1"><b>1</b> Window seat</a><a href="#d3"><b>3</b> Expanding panels</a>
+    <span class="cx-g">Student Pass</span><a href="#s1"><b>1</b> Your file</a><a href="#s3"><b>3</b> Boarding gate</a>
+    <span class="cx-g">Universities</span><a href="#u1"><b>1</b> Glass skyline</a><a href="#u2"><b>2</b> Crests</a><a href="#u3"><b>3</b> 3D card</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ DESTINATIONS 1 · WINDOW SEAT ============ -->
+<section class="cx-sec ws" id="d1" style="--bg:#070D1F; --accent:#FF8A9A" aria-labelledby="ws-title" data-ws>
+  <p class="cx-tag">Destinations · Option 1 · Window seat</p>
+  <div class="ws-cabin" aria-hidden="true"><i class="ws-light"></i><i class="ws-glow" data-ws-glow></i></div>
+  <div class="wrap ws-grid">
+    <div class="ws-col">
+      <div class="ws-bezel">
+        <div class="ws-recess">
+          <div class="ws-pane" data-ws-pane>
+            <canvas class="ws-gl" data-ws-gl></canvas>
+            <div class="ws-fb" data-ws-fb></div>
+            <i class="ws-refl"></i><i class="ws-hole"></i>
+          </div>
+          <div class="ws-shade" data-ws-shade><i></i></div>
+        </div>
+      </div>
+      <p class="ws-hud" aria-hidden="true"><span>Seat 14A</span><span data-ws-hud>Cruising over Malaysia</span><span>36,000 ft</span></p>
+    </div>
+    <div class="ws-info">
+      <p class="kick">02 · Where you could live</p>
+      <h2 class="h2 ws-h" id="ws-title">Choose your <em>window seat.</em></h2>
+      <div class="ws-now" aria-live="polite">
+        <p class="ws-tag" data-ws-tag></p>
+        <h3 class="ws-name" data-ws-name></h3>
+        <p class="ws-text" data-ws-text></p>
+        <div class="ws-stats"><b data-ws-count></b><span>EMGS-registered<br>institutions</span><span class="ws-code" data-ws-code></span></div>
+        <div class="ws-chips" data-ws-chips></div>
+        <a class="btn btn--sun btn--sm" data-ws-cta href="./universities.html">See these campuses →</a>
+      </div>
+      <ol class="ws-list" data-ws-list></ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DESTINATIONS 3 · EXPANDING PANELS ============ -->
+<section class="cx-sec xp" id="d3" style="--bg:#081428; --accent:#FF8A9A" aria-labelledby="xp-title" data-xp>
+  <p class="cx-tag">Destinations · Option 3 · Expanding panels</p>
+  <div class="wrap">
+    <div class="head"><div><p class="kick">02 · Where you could live</p><h2 class="h2" id="xp-title">Five regions, <em>five ways to live.</em></h2></div><p class="lead">Hover to look closer. Open a region to see its campuses, then step through the others without leaving the view.</p></div>
+  </div>
+  <div class="xp-wrap"><div class="xp-row" data-xp-row></div></div>
+</section>
+
+<!-- ============ STUDENT PASS 1 · YOUR FILE ============ -->
+<section class="cx-sec fl" id="s1" style="--bg:#00454E; --accent:#FF9B71" aria-labelledby="fl-title" data-fl>
+  <p class="cx-tag">Student Pass · Option 1 · Your file, page by page</p>
+  <div class="wrap">
+    <div class="head"><div><p class="kick">05 · The Student Pass, step by step</p><h2 class="h2" id="fl-title">From offer letter <em>to arrivals hall.</em></h2></div><p class="lead">Malaysia runs no credibility interview, so the decisive work is on paper. Here is your file, page by page, the way your counsellor builds it.</p></div>
+    <div class="fl-grid">
+      <div class="fl-stage" data-fl-stage><div class="fl-desk" data-fl-desk><div class="fl-mat"></div><div class="fl-pp" aria-hidden="true"><b>Passport</b><i></i><small>Travel document</small></div><div class="fl-pen" aria-hidden="true"></div></div></div>
+      <div class="fl-info" aria-live="polite">
+        <p class="fl-k" data-fl-k></p>
+        <h3 class="fl-t" data-fl-t></h3>
+        <p class="fl-x" data-fl-x></p>
+        <p class="fl-note" data-fl-note></p>
+        <div class="fl-nav"><button type="button" class="rbtn" data-fl-prev aria-label="Previous page">←</button><ol class="fl-pips" data-fl-pips></ol><button type="button" class="rbtn" data-fl-next aria-label="Next page">→</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STUDENT PASS 3 · BOARDING GATE ============ -->
+<section class="cx-sec bg3" id="s3" style="--bg:#06283A; --accent:#FF9B71" aria-labelledby="bg3-title" data-bp>
+  <p class="cx-tag">Student Pass · Option 3 · Boarding gate</p>
+  <div class="wrap">
+    <div class="head"><div><p class="kick">05 · The Student Pass, step by step</p><h2 class="h2" id="bg3-title">Chennai to KL, <em>gate by gate.</em></h2></div><p class="lead">Seven checkpoints between your first question and your first job offer. Pick one and the flight moves on.</p></div>
+  </div>
+  <div class="bp-route" data-bp-route>
+    <svg viewBox="0 0 1200 380" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <defs><linearGradient id="bpg" x1="0" x2="1"><stop offset="0" stop-color="#FF9B71"/><stop offset="1" stop-color="#FFCC00"/></linearGradient></defs>
+      <g class="bp-grid" data-bp-grid></g>
+      <text class="bp-sea" x="330" y="235">Bay of Bengal</text><text class="bp-sea" x="560" y="320">Andaman Sea</text>
+      <path class="bp-base" d="M90 300 C 300 40, 640 40, 820 250 S 1040 300, 1120 170"/>
+      <path class="bp-prog" data-bp-prog d="M90 300 C 300 40, 640 40, 820 250 S 1040 300, 1120 170"/>
+      <g data-bp-nodes></g>
+      <g class="bp-city"><circle cx="90" cy="300" r="5"/><text x="90" y="336">MAA · Chennai</text></g>
+      <g class="bp-city"><circle cx="820" cy="250" r="5"/><text x="820" y="286">KUL · Kuala Lumpur</text></g>
+      <g class="bp-plane" data-bp-plane><path d="M0-3.2 L-6-3.4 -16-13 -19.5-13 -12.5-3.6 -21-3.8 -24.5-8 -26.5-8 -24-1.2 -24.6 0 -24 1.2 -26.5 8 -24.5 8 -21 3.8 -12.5 3.6 -19.5 13 -16 13 -6 3.4 0 3.2 C 4 3.2 8 2 9.5 0 8 -2 4 -3.2 0 -3.2Z" transform="scale(1.35)"/></g>
+    </svg>
+  </div>
+  <div class="wrap bp-grid2">
+    <article class="bp-pass" data-bp-pass>
+      <div class="bp-main">
+        <div class="bp-ph" data-bp-ph></div>
+        <div class="bp-top"><span class="bp-brand">Tutee Connect · Boarding pass</span><span class="bp-cls">Student class</span></div>
+        <div class="bp-fields">
+          <div class="bp-f"><small>Passenger</small><b>You</b></div>
+          <div class="bp-f"><small>From</small><b>MAA</b><i>Chennai</i></div>
+          <div class="bp-f bp-to"><small>To</small><b>KUL</b><i>Kuala Lumpur</i></div>
+          <div class="bp-f"><small>Gate</small><b class="flap" data-bp-gate>01</b></div>
+          <div class="bp-f"><small>Seat</small><b>14A</b></div>
+          <div class="bp-f bp-st"><small>Now</small><b class="flap flap--w" data-bp-now>CHECK-IN</b></div>
+        </div>
+      </div>
+      <div class="bp-stub"><small>Checkpoint</small><b data-bp-num>01 / 07</b><i class="bp-bar" aria-hidden="true"></i><small>TC 2027 · MAA–KUL</small></div>
+    </article>
+    <div class="bp-info" aria-live="polite">
+      <p class="fl-k" data-bp-k></p><h3 class="fl-t" data-bp-t></h3><p class="fl-x" data-bp-x></p><p class="fl-note" data-bp-note></p>
+      <div class="fl-nav"><button type="button" class="rbtn" data-bp-prev aria-label="Previous checkpoint">←</button><ol class="fl-pips" data-bp-pips></ol><button type="button" class="rbtn" data-bp-next aria-label="Next checkpoint">→</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ UNIVERSITIES 1 · GLASS SKYLINE ============ -->
+<section class="cx-sec sk" id="u1" style="--bg:#04150F; --accent:#9FE2BF" aria-labelledby="sk-title" data-sk>
+  <p class="cx-tag">Universities · Option 1 · Glass skyline</p>
+  <div class="sk-stage">
+    <canvas class="sk-gl" data-sk-gl></canvas>
+    <div class="sk-labels" data-sk-labels aria-hidden="true"></div>
+    <div class="wrap sk-head"><p class="kick">04 · Top 12 in Malaysia · QS 2027</p><h2 class="h2" id="sk-title">A skyline <em>we know by heart.</em></h2><p class="lead">Each tower is a university. Height is the number of accredited programmes; the closer to the centre, the higher the QS rank. Tap a tower.</p></div>
+    <aside class="u-card sk-card" data-ucard="sk" aria-live="polite"></aside>
+  </div>
+  <div class="wrap"><div class="u-chips" data-uchips="sk" role="tablist" aria-label="Top 12 universities"></div></div>
+</section>
+
+<!-- ============ UNIVERSITIES 2 · FLOATING CRESTS ============ -->
+<section class="cx-sec cr" id="u2" style="--bg:#06231B; --accent:#9FE2BF" aria-labelledby="cr-title" data-cr>
+  <p class="cx-tag">Universities · Option 2 · Floating crests</p>
+  <div class="cr-stage">
+    <canvas class="cr-gl" data-cr-gl></canvas>
+    <div class="wrap cr-head"><p class="kick">04 · Top 12 in Malaysia · QS 2027</p><h2 class="h2" id="cr-title">Twelve crests, <em>one shortlist.</em></h2></div>
+    <aside class="u-card cr-card" data-ucard="cr" aria-live="polite"></aside>
+  </div>
+  <div class="wrap"><div class="u-chips" data-uchips="cr" role="tablist" aria-label="Top 12 universities"></div></div>
+</section>
+
+<!-- ============ UNIVERSITIES 3 · LEADERBOARD + 3D CARD ============ -->
+<section class="cx-sec lb3" id="u3" style="--bg:#0B3D2E; --accent:#9FE2BF" aria-labelledby="lb3-title" data-lb3>
+  <p class="cx-tag">Universities · Option 3 · Leaderboard with a 3D card</p>
+  <div class="wrap">
+    <div class="head"><div><p class="kick">04 · Top 12 in Malaysia · QS 2027</p><h2 class="h2" id="lb3-title">The leaderboard <em>we know by heart.</em></h2></div><p class="lead">Pick a university to put it in the spotlight. Move over the card to tilt it; flip it for the details.</p></div>
+    <div class="l3">
+      <ol class="l3-list" data-l3-list></ol>
+      <div class="l3-scene" data-l3-scene>
+        <div class="l3-card" data-l3-card>
+          <div class="l3-face l3-front"><div class="l3-ph" data-l3-ph></div><i class="l3-glare" data-l3-glare></i><span class="l3-rank"><small>QS · Malaysia</small><b data-l3-rank>1</b></span><div class="l3-cap"><small data-l3-type></small><h3 data-l3-name></h3><p data-l3-loc></p></div><button type="button" class="btn btn--glass btn--sm l3-flip" data-l3-flip>Flip for details ↻</button></div>
+          <div class="l3-face l3-back" data-l3-back></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="cx-foot"><p>Concept lab · Choose one option per section and it goes into the main page. Photography via Unsplash.</p></footer>
+</body>
+</html>

@@ -1,0 +1,24 @@
+/* ---------- performance layer (see assets/js/perf.js) ---------- */
+
+/* sections off screen pause their decorative animations */
+.sec.is-off *, .sec.is-off *::before, .sec.is-off *::after, footer.is-off *, footer.is-off *::before, footer.is-off *::after { animation-play-state: paused !important; }
+
+/* the sheen sweep moves a layer instead of repainting the whole section's background every frame
+   (same band, same path: the 260%-wide gradient travels from -80% to +80% of its own width) */
+.fx-sheen { overflow: hidden; background-size: 0 0 !important; background-repeat: no-repeat !important; animation: none !important; }
+.fx-sheen::before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 260%; background-image: inherit; background-size: 100% 100%; background-repeat: no-repeat; animation: sheen-x 8s ease-in-out infinite; will-change: transform; pointer-events: none; }
+@keyframes sheen-x { from { transform: translateX(-80%); } to { transform: translateX(80%); } }
+
+/* effects that repaint on the main thread hold still while the page is scrolling, and pick up where they left off */
+.is-scrolling .fx-sheen::before, .is-scrolling .fx-batik-svg path, .is-scrolling .fx-moon, .is-scrolling .fx-jet, .is-scrolling .fids-dot, .is-scrolling .pm-pulse, .is-scrolling .trk-chip::before { animation-play-state: paused !important; }
+
+/* lite mode (weaker devices): no live backdrop blur, slightly more opaque glass so text stays readable,
+   and the background particles stay still */
+.lite *, .lite *::before, .lite *::after { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+.lite .dock { background: rgba(10,14,40,.9); }
+.lite .nav::before { background: rgba(10,15,44,.88); }
+.lite .ta-panel { background: rgba(9,12,38,.97); }
+.lite .btn--glass { background: rgba(255,255,255,.2); }
+.lite .bgfx *, .lite .bgfx *::before, .lite .bgfx *::after { animation-play-state: paused !important; }
+.lite .fx-sheen::before { display: none; }
+.lite .hs-wall i { filter: blur(24px); }

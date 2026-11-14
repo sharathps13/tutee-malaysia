@@ -1,0 +1,158 @@
+/* ---------- The small-phone layer: sized for an iPhone SE (375 × 667) ----------
+   Loaded last. Everything sits inside phone-width media queries, so the desktop layout is untouched.
+   The aim, after the Singapore page: each section reads in about one or two screens, the fixed bars leave most of
+   the 667px for the page, and every tall block (film, crests, file, phone mock-up, reviews, questions, form,
+   footer) is cut down to fit the screen instead of running past it. */
+/* at every width: the clock's "KL time" label stays on one line above the time (it was breaking into two) */
+.nav-kl-t small { white-space: nowrap; }
+
+@media (max-width: 560px) {
+  /* ----- the hero's eyebrow fits one line, so the flag sits right beside it ----- */
+  .hg-copy .eyebrow { gap: 8px; font-size: 10.5px; letter-spacing: .13em; white-space: nowrap; }
+  .hg-copy .eyebrow .flag { width: 22px; height: 14px; }
+
+  /* ----- the frame: slimmer bars top and bottom ----- */
+  .nav { padding-block: 8px; }
+  .nav-logo .nl-plate { --h: 42px; --mk: 31px; --lh: 36px; --wide: 112px; }
+  .nav-logo .nl-word { width: 88px; margin-left: 9px; }
+  .nav-menu { height: 42px; }
+  .nav-kl { height: 42px; }
+  :root { --nr-h: 36px; }
+  .nr-live { height: 26px; }
+  .nr-item { padding-block: 3px; }
+  .nr-item b { font-size: 12.5px; }
+  .mbar { padding-top: 7px; padding-bottom: calc(7px + var(--nr-h) + env(safe-area-inset-bottom, 0px)); gap: 7px; }
+  .mbar-ai, .mbar-cta, .mbar-wa { height: 42px; }
+  .mbar-wa { width: 42px; }
+  .mbar-orb { width: 30px; height: 30px; }
+  .mbar-cta { font-size: 14.5px; }
+
+  /* ----- every section: tighter rhythm and type ----- */
+  .sec { padding-block: 56px; }
+  .head { gap: 12px; margin-bottom: 22px; }
+  .kick { margin-bottom: 12px; font-size: 11px; letter-spacing: .16em; }
+  .h2 { font-size: clamp(30px, 8.8vw, 38px); line-height: 1.02; }
+  .h2--xl { font-size: clamp(34px, 9.8vw, 42px); }
+  .lead { font-size: 15px; line-height: 1.55; }
+  .btn { min-height: 46px; }
+
+  /* ----- hero: a shorter fly-through before the page starts ----- */
+  .hg-space { height: 22vh; }
+  .hg-copy { min-height: 0; }
+
+  /* ----- 02 Where you could live ----- */
+  .places .pcw .vn { gap: 12px; }
+  .places .vn-deck { width: 86%; margin: 0 auto; }
+  .places .vn-side { gap: 10px; }
+  .places .vn-shelf { padding: 34px 0 12px; }
+  .places .vn-notes { gap: 10px; }
+  .places .vn-notes h3 { font-size: 30px; }
+  .places .vn-notes p { font-size: 14.5px; line-height: 1.5; }
+  .places .vn-tracks li { padding: 6px 0; font-size: 14px; }
+  .places .vn-tracks b { font-size: 16px; }
+  .places .vn-cta { min-height: 46px; }
+
+  /* ----- 04 Universities: the crest ring and its card fit one screen; the twelve names scroll sideways ----- */
+  /* the ring gets the top of the stage to itself and the card sits under it, so the crests are never covered */
+  .cr-stage { height: auto; padding-top: 300px; }
+  .cr-gl { inset: 0 0 auto 0; height: 300px; }
+  .u-card { position: relative; inset: auto; transform: none; width: auto; margin: 0 var(--pad); padding: 14px 16px; gap: 4px; border-radius: 20px; }
+  .u-card h3 { font-size: 22px; }
+  .u-card .uc-rank { font-size: 38px; }
+  .u-card .uc-acc b { font-size: 28px; }
+  .u-card .uc-acts .btn { min-height: 40px; padding: 0 16px; font-size: 13.5px; }
+  .u-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 14px calc(var(--pad) * -1) 0; padding: 2px var(--pad) 4px; }
+  .u-chips::-webkit-scrollbar { display: none; }
+  .u-chips button { flex: none; height: 36px; }
+
+  /* ----- 05 Student Pass: a shorter desk, a wider photo, smaller page tabs ----- */
+  .fl-stage { height: 300px; }
+  .fl-desk { --w: clamp(150px, 40vw, 200px); }
+  .fl-info { padding: 12px; gap: 8px; border-radius: 22px; }
+  .fl-ph { aspect-ratio: 16 / 8; }
+  .fl-ph b { font-size: 46px; }
+  .fl-tabs { grid-auto-columns: minmax(132px, 1fr); }
+  .fl-tabs button { padding: 10px 12px 12px; gap: 2px; }
+  .fl-tabs button b { font-size: 20px; }
+  .fl-tabs button span { font-size: 12.5px; }
+
+  /* ----- 06 Course finder: a shorter phone ----- */
+  .hs { height: 590px; }
+  .hs-grid { top: 80px; row-gap: 14px; }
+
+  /* ----- 07 Life: less air between the parts, phrases in one row you swipe ----- */
+  .lf-band { margin-top: 22px; }
+  .speak { margin: 36px 0; gap: 16px; }
+  .speak .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 calc(var(--pad) * -1); padding: 4px var(--pad) 6px; }
+  .speak .chips::-webkit-scrollbar { display: none; }
+  .speak .chips > * { flex: none; }
+  .speak-card { padding: 20px; }
+  .fy-head { margin-bottom: 14px; }
+  .fy-stage { aspect-ratio: 1 / 1; }
+
+  /* ----- 09 Funding: the film fits the screen; chapters sit side by side ----- */
+  .frl-player { height: 650px; }
+  .frl-scene { padding: 52px 16px 78px; gap: 12px; }
+  .frl-t { font-size: 26px; }
+  .frl-vis { zoom: .84; }
+  .frl-chaps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .frl-chaps button { flex-direction: column; align-items: flex-start; gap: 6px; padding: 6px 6px 9px; border-radius: 12px; }
+  .frl-chaps img { width: 100%; height: 40px; }
+  .frl-chaps b { font-size: 12.5px; line-height: 1.15; }
+  .frl-chaps small { font-size: 10px; }
+  .lp { margin-top: 32px; }
+
+  /* ----- 11 Reviews: a compact card ----- */
+  .voices.sec { padding-top: 56px; }
+  .voices .pt { margin-top: 10px; }
+  .voices .pt-stage { padding: 8px 0; }
+  .voices .pt-card { font-size: 15.5px; padding: 18px; gap: .75em; border-radius: 18px; }
+
+  /* ----- 12 Questions: a list of short rows instead of tall tiles ----- */
+  .faq .fq-head { gap: 16px; margin-bottom: 16px; }
+  .faq .fq-tools { gap: 12px; }
+  .faq .fq-board { gap: 8px; }
+  .faq .fq-in { border-radius: 18px; }
+  .faq .fq-q, .faq .fq-tile.is-open .fq-q { grid-template-rows: auto auto; min-height: 0; gap: 6px; padding: 13px 62px 14px 16px; }
+  .faq .fq-q:focus-visible { border-radius: 18px; }
+  .faq .fq-top { justify-content: flex-start; gap: 10px; }
+  .faq .fq-n { font-size: 20px; -webkit-text-stroke-width: 1px; }
+  .faq .fq-cat { padding: 3px 8px; font-size: 9.5px; }
+  .faq .fq-t, .faq .fq-tile.is-wide .fq-t, .faq .fq-tile.is-open .fq-t { font-size: 16.5px; line-height: 1.2; }
+  .faq .fq-go { top: 50%; bottom: auto; right: 14px; width: 36px; height: 36px; transform: translateY(-50%); }
+  .faq .fq-tile.is-open .fq-go { top: 34px; transform: translateY(-50%) rotate(45deg); }
+  .faq .fq-a { padding: 16px; gap: 14px; }
+  .faq .fq-a p { font-size: 15px; }
+  .faq .faq-more { margin-top: 14px; }
+
+  /* ----- 13 Free evaluation: shorter step rows, offices side by side ----- */
+  .pb-scene { padding: 4px 0 14px; }
+  .pb-steps { gap: 7px; }
+  .pb-st { border-radius: 16px; }
+  .pb-st-h { padding: 9px 12px; gap: 10px; grid-template-columns: 30px minmax(0, 1fr) auto; }
+  .pb-st-h i { width: 30px; height: 30px; }
+  .pb-st-b { gap: 10px; padding: 0 14px 14px; }
+  .pb-st-b h3 { font-size: 20px; }
+  .begin .offices { grid-template-columns: 1fr 1fr; gap: 14px 16px; margin-top: 26px; padding: 0; font-size: 13.5px; }
+
+  /* ----- footer: a shorter skyline, links in two columns ----- */
+  .foot-sky { height: 470px; margin-bottom: 34px; }
+  .foot-sky-in { padding-top: 36px; }
+  .foot-sky .foot-word { font-size: 54px; margin-bottom: 12px; }
+  .foot-hint { margin-bottom: 16px; }
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 26px 18px; padding-bottom: 26px; }
+  .foot-grid > div:first-child { grid-column: 1 / -1; }
+  .foot-grid h4 { margin-bottom: 10px; }
+  .foot-grid li { margin: 0; }
+  .foot-grid li a { display: inline-block; padding: 4px 0; font-size: 14px; }
+  .foot-base { padding-top: 16px; font-size: 12px; }
+}
+
+/* a short screen (iPhone SE and similar): the pinned scenes and tall frames come down a little more */
+@media (max-width: 560px) and (max-height: 740px) {
+  .cr-stage { padding-top: 270px; }
+  .cr-gl { height: 270px; }
+  .fl-stage { height: 270px; }
+  .hs { height: 570px; }
+  .frl-player { height: 630px; }
+}

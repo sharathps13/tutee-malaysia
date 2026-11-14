@@ -1,0 +1,54 @@
+/* ---------- Our education-loan partners: the lender strip (assets/js/lenders.js) ---------- */
+.lp { --acc: var(--accent, #C7F0A0); position: relative; z-index: 1; margin-top: clamp(60px, 8vw, 110px); }
+.lp-head { display: grid; justify-items: center; gap: 14px; margin-bottom: 6px; padding: 0 var(--pad); }
+.lp-head .partners-k { margin: 0; }
+.lp-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.lp-chips button { appearance: none; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.06); color: #fff; font: 700 13px/1 var(--sans); padding: 10px 15px; border-radius: 999px; cursor: pointer; transition: background .3s, border-color .3s, color .3s, transform .4s var(--ease); }
+.lp-chips button:hover { border-color: rgba(255,255,255,.45); transform: translateY(-2px); }
+.lp-chips button[aria-pressed="true"] { background: var(--acc); border-color: var(--acc); color: #0a2a18; }
+.lp-chips button:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; }
+
+.lp-strip { position: relative; overflow: hidden; padding: 34px 0 22px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.lp-track { display: flex; gap: 16px; width: max-content; padding: 0 8px; will-change: transform; }
+.lp-tile { position: relative; flex: none; display: grid; place-items: center; width: 146px; height: 74px; padding: 0 18px; border: 0; border-radius: 16px; background: #fff; cursor: pointer; transform-origin: 50% 100%;
+  box-shadow: 0 10px 24px -16px rgba(0,0,0,.6); transition: opacity .45s, filter .45s, box-shadow .35s; }
+.lp-tile img { max-height: 38px; max-width: 112px; width: auto; height: auto; object-fit: contain; pointer-events: none; }
+.lp-tag { position: absolute; left: 50%; bottom: -10px; translate: -50% 0; padding: 4px 8px; border-radius: 999px; background: #0f3a26; color: #fff; font: 800 9.5px/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; opacity: 0; transform: translateY(-4px); transition: opacity .3s, transform .4s var(--ease); pointer-events: none; font-style: normal; }
+.lp-tile:hover .lp-tag, .lp-tile:focus-visible .lp-tag, .lp-tile.is-match .lp-tag, .lp-tile.is-open .lp-tag { opacity: 1; transform: none; }
+.lp-tile.is-dim { opacity: .28; filter: grayscale(1); }
+.lp-tile.is-match { box-shadow: 0 0 0 3px var(--acc), 0 14px 30px -14px rgba(199,240,160,.55); }
+.lp-tile.is-open { box-shadow: 0 0 0 3px #FFCC00, 0 16px 34px -14px rgba(0,0,0,.7); }
+.lp-tile:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--acc); }
+.lp-hint { text-align: center; font-size: 12.5px; opacity: .6; margin-top: 4px; padding: 0 var(--pad); }
+
+/* the lender card */
+.lp-card { position: absolute; z-index: 5; width: min(360px, calc(100% - 16px)); padding: 18px 18px 16px; border-radius: 20px; background: #fbf8f1; color: #0B1030; box-shadow: 0 30px 70px -24px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.6); }
+.lp-card::after { content: ""; position: absolute; left: var(--ax, 50%); bottom: -8px; width: 16px; height: 16px; margin-left: -8px; background: #fbf8f1; transform: rotate(45deg); border-radius: 0 0 4px 0; }
+.lp-card.in { animation: lp-in .45s var(--ease) both; }
+@keyframes lp-in { from { opacity: 0; transform: translateY(12px) scale(.96); } }
+.lp-x { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(11,16,48,.15); background: transparent; color: inherit; cursor: pointer; font-size: 12px; }
+.lp-x:hover { background: rgba(11,16,48,.06); }
+.lp-ch { display: flex; align-items: center; gap: 12px; padding-right: 30px; }
+.lp-logo { flex: none; display: grid; place-items: center; width: 84px; height: 48px; border-radius: 12px; background: #fff; box-shadow: 0 0 0 1px rgba(11,16,48,.08); padding: 6px; }
+.lp-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.lp-ch b { display: block; font-family: var(--serif); font-weight: 420; font-size: 21px; line-height: 1.1; }
+.lp-ch small { font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; opacity: .55; }
+.lp-card ul { list-style: none; margin: 14px 0 10px; padding: 0; display: grid; gap: 7px; }
+.lp-card li { position: relative; padding-left: 22px; font-size: 14px; line-height: 1.4; }
+.lp-card li::before { content: ""; position: absolute; left: 2px; top: 5px; width: 10px; height: 6px; border-left: 2px solid #127a46; border-bottom: 2px solid #127a46; transform: rotate(-45deg); }
+.lp-note { font-size: 12.5px; line-height: 1.5; opacity: .65; padding-top: 10px; border-top: 1px dashed rgba(11,16,48,.15); }
+.lp-acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.lp-acts .btn--glass { color: #0A1A5C; background: rgba(10,26,92,.07); border-color: rgba(10,26,92,.18); }
+
+/* reduced motion: the strip holds still and wraps */
+.lp.is-still .lp-track { flex-wrap: wrap; justify-content: center; width: auto; transform: none !important; }
+.lp.is-still .lp-tile[aria-hidden="true"] { display: none; }
+.lp.is-still .lp-strip { -webkit-mask-image: none; mask-image: none; }
+
+@media (max-width: 699px) {
+  .lp-tile { width: 124px; height: 64px; padding: 0 14px; }
+  .lp-tile img { max-height: 32px; max-width: 96px; }
+  .lp-card { position: relative; left: auto !important; top: auto !important; margin: 4px auto 0; width: calc(100% - 2 * var(--pad)); }
+  .lp-card::after { display: none; }
+  .lp-chips button { font-size: 12px; padding: 9px 12px; }
+}

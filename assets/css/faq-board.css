@@ -1,0 +1,90 @@
+/* ---------- Questions · the interactive question board (replaces the scripted chat) ---------- */
+.faq .fq { position: relative; z-index: 1; --fq-grot: "Bricolage Grotesque", var(--sans); --fq-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; }
+.faq .fq-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 4vw, 64px); align-items: end; margin-bottom: clamp(26px, 4vw, 48px); }
+.faq .fq-tools { display: grid; gap: 16px; }
+.faq .fq-search { display: flex; align-items: center; gap: 10px; height: 54px; padding: 0 18px; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px rgba(11,16,48,.1), 0 18px 40px -24px rgba(11,16,48,.45); transition: box-shadow .3s; }
+.faq .fq-search:focus-within { box-shadow: 0 0 0 2px var(--red), 0 18px 40px -24px rgba(11,16,48,.45); }
+.faq .fq-search svg { width: 20px; height: 20px; flex: none; color: rgba(11,16,48,.5); }
+.faq .fq-search input { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; font: 500 16px var(--sans); color: var(--ink); }
+.faq .fq-cats { display: flex; flex-wrap: wrap; gap: 8px; }
+.faq .fq-cats button { display: inline-flex; align-items: center; gap: 8px; min-height: 38px; padding: 0 15px; border: 1px solid rgba(11,16,48,.16); border-radius: 999px; background: rgba(255,255,255,.6); color: var(--ink); font: 700 12px var(--fq-mono); letter-spacing: .05em; text-transform: uppercase; cursor: pointer; transition: background-color .25s, color .25s, border-color .25s, transform .3s var(--ease); }
+.faq .fq-cats button i { width: 9px; height: 9px; border-radius: 50%; background: linear-gradient(135deg, var(--c1), var(--c2)); }
+.faq .fq-cats button:hover { transform: translateY(-2px); border-color: rgba(11,16,48,.35); }
+.faq .fq-cats button.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+.faq .fq-cats button:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+
+/* the bento */
+.faq .fq-board { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(230px, auto); grid-auto-flow: dense; gap: 16px; }
+.faq .fq-tile { position: relative; min-width: 0; }
+.faq .fq-tile.is-wide { grid-column: span 2; }
+.faq .fq-tile.is-open { grid-column: 1 / -1; z-index: 2; }
+.faq .fq-in { position: relative; height: 100%; border-radius: 26px; overflow: hidden; color: #fff; isolation: isolate;
+  background: radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--c2) 80%, #fff 20%), transparent 55%), linear-gradient(150deg, var(--c1), var(--c2));
+  box-shadow: 0 24px 50px -28px color-mix(in srgb, var(--c1) 85%, #000); transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .35s; }
+.faq .fq-tile.is-hot .fq-in { transition: transform .12s linear, box-shadow .35s; box-shadow: 0 34px 60px -26px color-mix(in srgb, var(--c1) 90%, #000); }
+.faq .fq-in::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .18;
+  background: repeating-linear-gradient(45deg, rgba(255,255,255,.5) 0 1px, transparent 1px 14px); -webkit-mask: radial-gradient(90% 80% at 0% 100%, #000, transparent 70%); mask: radial-gradient(90% 80% at 0% 100%, #000, transparent 70%); }
+.faq .fq-glare { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(circle at var(--gx, 50%) var(--gy, 0%), rgba(255,255,255,.32), transparent 45%); mix-blend-mode: soft-light; }
+.faq .fq-tile.is-hot .fq-glare { opacity: 1; }
+.faq .fq-q { position: relative; z-index: 1; display: grid; grid-template-rows: auto 1fr auto; gap: 12px; width: 100%; height: 100%; min-height: 230px; padding: 22px 22px 22px 24px; border: 0; background: none; color: inherit; text-align: left; font: inherit; cursor: pointer; }
+.faq .fq-q:focus-visible { outline: 3px solid #fff; outline-offset: -6px; border-radius: 26px; }
+.faq .fq-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.faq .fq-n { font: 800 54px / .8 var(--fq-grot); letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,.55); }
+.faq .fq-cat { padding: 5px 11px; border-radius: 999px; background: rgba(255,255,255,.16); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); font: 700 10.5px var(--fq-mono); letter-spacing: .1em; text-transform: uppercase; }
+.faq .fq-ic { position: absolute; right: 22px; top: 58px; width: 42px; height: 42px; opacity: .8; transition: transform .6s var(--ease); }
+.faq .fq-tile.is-hot .fq-ic { transform: translateY(-4px) rotate(-8deg) scale(1.08); }
+.faq .fq-t { align-self: end; max-width: 22ch; font: 800 clamp(20px, 1.75vw, 27px) / 1.08 var(--fq-grot); letter-spacing: -.025em; text-wrap: balance; }
+.faq .fq-tile.is-wide .fq-t { max-width: 26ch; font-size: clamp(24px, 2.3vw, 34px); }
+.faq .fq-go { position: absolute; right: 20px; bottom: 20px; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,.18); transition: transform .5s var(--ease), background-color .3s, color .3s; }
+.faq .fq-go svg { width: 18px; height: 18px; }
+.faq .fq-tile.is-hot .fq-go { background: #fff; color: var(--c1); }
+.faq .fq-tile.is-open .fq-go { transform: rotate(45deg); background: #fff; color: var(--c1); }
+
+/* an open card: question on the left, answer on the right */
+.faq .fq-tile.is-open .fq-in { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.25fr); transform: none; }
+.faq .fq-tile.is-open .fq-q { min-height: 300px; }
+.faq .fq-tile.is-open .fq-t { max-width: 18ch; font-size: clamp(28px, 3vw, 44px); }
+.faq .fq-a { position: relative; z-index: 1; display: grid; align-content: center; gap: 22px; padding: clamp(24px, 3vw, 44px) clamp(24px, 3.4vw, 52px); border-left: 1px solid rgba(255,255,255,.18); background: rgba(5,8,30,.16); }
+.faq .fq-a p { font: 500 clamp(16px, 1.3vw, 19px) / 1.6 var(--sans); }
+.faq .fq-w { display: inline-block; }
+.faq .fq-acts { display: flex; flex-wrap: wrap; gap: 10px; }
+.faq .fq-close { min-height: 46px; padding: 0 20px; border: 1px solid rgba(255,255,255,.4); border-radius: 999px; background: transparent; color: #fff; font: 700 14px var(--sans); cursor: pointer; transition: background-color .25s; }
+.faq .fq-close:hover { background: rgba(255,255,255,.14); }
+
+/* the "ask the AI" buttons share the assistant's look */
+.faq .fq-askai { position: relative; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px 0 16px; border: 0; border-radius: 999px; color: #fff; font: 700 14px var(--sans); cursor: pointer; isolation: isolate;
+  background: linear-gradient(#0B1030, #0B1030) padding-box, conic-gradient(from var(--ta-a, 0deg), #FFCC00, #FF4D6D, #6C7BFF, #2EE6C5, #FFCC00) border-box; border: 2px solid transparent; animation: ta-spin 4s linear infinite; transition: transform .3s var(--ease); }
+.faq .fq-askai:hover { transform: translateY(-2px) scale(1.03); }
+.faq .fq-spark { width: 18px; height: 18px; background: conic-gradient(from 0deg, #FFCC00, #FF4D6D, #6C7BFF, #2EE6C5, #FFCC00); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1l2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1l2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6z'/%3E%3C/svg%3E") center / contain no-repeat; }
+.faq .fq-empty { display: grid; justify-items: center; gap: 14px; padding: 40px 20px; text-align: center; font-size: 17px; }
+.faq .fq-empty[hidden] { display: none; }
+.faq .faq-more { margin-top: 26px; }
+
+@media (max-width: 1100px) { .faq .fq-board { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) {
+  .faq .fq-head { grid-template-columns: minmax(0, 1fr); }
+  .faq .fq-board { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; gap: 12px; }
+  .faq .fq-tile.is-wide { grid-column: auto; }
+  .faq .fq-q, .faq .fq-tile.is-open .fq-q { min-height: 190px; }
+  .faq .fq-n { font-size: 44px; }
+  .faq .fq-tile.is-open .fq-in { grid-template-columns: minmax(0, 1fr); }
+  .faq .fq-tile.is-open .fq-t { font-size: 26px; }
+  .faq .fq-a { border-left: 0; border-top: 1px solid rgba(255,255,255,.18); padding: 22px; }
+  .faq .fq-cats { flex-wrap: nowrap; overflow-x: auto; margin: 0 calc(var(--pad) * -1); padding: 2px var(--pad) 6px; scrollbar-width: none; }
+  .faq .fq-cats::-webkit-scrollbar { display: none; }
+  .faq .fq-cats button { flex: none; }
+}
+@media (prefers-reduced-motion: reduce) { .faq .fq-in, .faq .fq-ic, .faq .fq-go { transition: none; } .faq .fq-askai { animation: none; } }
+
+/* key points previewed on hover: the question lifts and shrinks, three points rise in under it */
+.faq .fq-t { transform-origin: 0 100%; transition: transform .55s var(--ease); }
+.faq .fq-pv { position: absolute; left: 24px; right: 70px; bottom: 20px; display: grid; gap: 5px; pointer-events: none; }
+.faq .fq-pv span { position: relative; padding-left: 20px; font: 600 13.5px/1.3 var(--sans); opacity: 0; transform: translateY(12px); transition: opacity .3s, transform .5s var(--ease); }
+.faq .fq-pv span::before { content: ""; position: absolute; left: 2px; top: 4px; width: 9px; height: 5px; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); opacity: .85; }
+.faq .fq-tile.is-hot:not(.is-open) .fq-t, .faq .fq-tile:not(.is-open) .fq-q:focus-visible .fq-t { transform: translateY(-92px) scale(.72); }
+.faq .fq-tile.is-hot:not(.is-open) .fq-pv span, .faq .fq-tile:not(.is-open) .fq-q:focus-visible .fq-pv span { opacity: 1; transform: none; transition-delay: calc(.1s + var(--k) * .07s); }
+.faq .fq-tile.is-hot:not(.is-open) .fq-ic { opacity: .22; }
+.faq .fq-tile.is-open .fq-pv { display: none; }
+@media (hover: none) { .faq .fq-pv { display: none; } }
+@media (prefers-reduced-motion: reduce) { .faq .fq-t, .faq .fq-pv span { transition: none; } }
+.faq .fq-top { transition: opacity .35s; } .faq .fq-tile.is-hot:not(.is-open) .fq-top { opacity: .28; }

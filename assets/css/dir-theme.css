@@ -1,0 +1,97 @@
+/* Directory in the course finder's phone language.
+   Applies to the in-page directory (.dirpop) and the standalone page (body.dir); load after dirpop.css / dir.css.
+   Wallpaper behind everything, fields as an app grid with red badges, the filter bar as a black island tray,
+   institutions as frosted widgets with a squircle rank tile. */
+:is(.dirpop, body.dir) {
+  --grot: "Bricolage Grotesque", var(--sans);
+  --wall: radial-gradient(ellipse 55% 45% at 10% 6%, rgba(255,106,136,.6), transparent 70%), radial-gradient(ellipse 45% 45% at 92% 14%, rgba(59,212,255,.38), transparent 70%), radial-gradient(ellipse 60% 55% at 88% 96%, rgba(106,92,255,.65), transparent 70%), radial-gradient(ellipse 70% 50% at 18% 100%, rgba(255,179,71,.5), transparent 70%), #2B1A6B;
+  --glass: rgba(255,255,255,.1); --glass-line: rgba(255,255,255,.22); --soft: rgba(255,255,255,.82);
+  --island: #000; --island-2: #1C1C1E; --island-3: #2C2C2E; --muted: #9A9AA3; --badge: #FF3B30;
+  background: var(--wall); color: #fff;
+}
+body.dir { background-attachment: fixed; }
+
+/* top bar: frosted like the phone's status area */
+:is(.dirpop, body.dir) .dnav { background: rgba(20,12,56,.55); box-shadow: 0 1px 0 rgba(255,255,255,.1); -webkit-backdrop-filter: blur(22px) saturate(1.4); backdrop-filter: blur(22px) saturate(1.4); }
+:is(.dirpop, body.dir) .dhero .tile-strip, :is(.dirpop, body.dir) .dh-ros { display: none; }
+:is(.dirpop, body.dir) .dhero { padding-top: clamp(56px, 7vw, 90px); }
+:is(.dirpop, body.dir) .dhero .kick { color: var(--sun); }
+:is(.dirpop, body.dir) .dh-title { font: 800 clamp(48px, 7.4vw, 116px) / .92 var(--grot); letter-spacing: -.045em; color: #fff; max-width: 13ch; text-shadow: 0 10px 40px rgba(20,8,60,.35); }
+:is(.dirpop, body.dir) .dh-title em { font-style: normal; color: #FF8FB1; }
+:is(.dirpop, body.dir) .dhero .lead { color: var(--soft); opacity: 1; }
+
+/* institution types: lock-screen style widgets */
+:is(.dirpop, body.dir) .types { gap: 10px; }
+:is(.dirpop, body.dir) .tchip { flex-direction: column; align-items: flex-start; gap: 2px; min-width: 128px; padding: 12px 16px 13px; border-radius: 22px; background: var(--glass); color: #fff; box-shadow: inset 0 0 0 1px var(--glass-line), 0 16px 30px -22px rgba(0,0,0,.6); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); text-align: left; }
+:is(.dirpop, body.dir) .tchip b { font: 800 30px / 1 var(--grot); letter-spacing: -.03em; color: #fff; }
+:is(.dirpop, body.dir) .tchip span { font-size: 12.5px; font-weight: 700; color: var(--soft); }
+:is(.dirpop, body.dir) .tchip::before { content: ""; width: 22px; height: 4px; margin-bottom: 8px; border-radius: 4px; background: color-mix(in srgb, var(--c) 55%, #fff); }
+:is(.dirpop, body.dir) .tchip:hover { background: rgba(255,255,255,.18); }
+:is(.dirpop, body.dir) .tchip[aria-pressed="true"] { background: #fff; color: var(--ink); box-shadow: 0 18px 36px -18px rgba(0,0,0,.6); }
+:is(.dirpop, body.dir) .tchip[aria-pressed="true"] b, :is(.dirpop, body.dir) .tchip[aria-pressed="true"] span { color: var(--ink); }
+:is(.dirpop, body.dir) .tchip[aria-pressed="true"]::before { background: var(--c); }
+
+/* fields: a home-screen app grid on a glass page */
+:is(.dirpop, body.dir) .dfields { padding-bottom: 34px; }
+:is(.dirpop, body.dir) .fields { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 26px 10px; padding: clamp(22px, 3vw, 34px) clamp(14px, 2.4vw, 30px); border-radius: 40px; background: rgba(255,255,255,.07); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+:is(.dirpop, body.dir) .fld { position: relative; display: grid; grid-template-columns: none; justify-items: center; align-content: start; gap: 9px; padding: 0; background: none; box-shadow: none; color: #fff; text-align: center; transform: none; }
+:is(.dirpop, body.dir) .fld:hover { transform: none; }
+:is(.dirpop, body.dir) .fld-i { width: 72px; height: 72px; border-radius: 26%; background: linear-gradient(160deg, color-mix(in srgb, var(--c) 55%, #fff) -20%, var(--c) 55%, color-mix(in srgb, var(--c) 70%, #000)); color: #fff; font-size: 26px; box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 14px 26px -12px rgba(0,0,0,.6); transition: scale .35s var(--ease), rotate .35s var(--ease); }
+:is(.dirpop, body.dir) .fld-i svg { width: 46%; height: 46%; }
+:is(.dirpop, body.dir) .fld:hover .fld-i { scale: 1.08; rotate: -3deg; }
+:is(.dirpop, body.dir) .fld:active .fld-i { scale: .92; }
+:is(.dirpop, body.dir) .fld-t { max-width: 14ch; font-size: 12.5px; font-weight: 600; line-height: 1.2; text-shadow: 0 1px 6px rgba(0,0,0,.45); }
+:is(.dirpop, body.dir) .fld b { position: absolute; top: -8px; left: calc(50% + 24px); min-width: 26px; height: 26px; padding: 0 7px; display: grid; place-items: center; border-radius: 999px; background: var(--badge); color: #fff; font: 700 13px / 1 var(--grot); box-shadow: 0 0 0 2px rgba(0,0,0,.08); }
+:is(.dirpop, body.dir) .fld[aria-pressed="true"] { background: none; }
+:is(.dirpop, body.dir) .fld[aria-pressed="true"] .fld-i { background: linear-gradient(160deg, color-mix(in srgb, var(--c) 55%, #fff) -20%, var(--c) 55%, color-mix(in srgb, var(--c) 70%, #000)); color: #fff; box-shadow: 0 0 0 3px #2B1A6B, 0 0 0 6px #fff, 0 18px 30px -12px rgba(0,0,0,.6); }
+:is(.dirpop, body.dir) .fld[aria-pressed="true"] .fld-t { color: var(--sun); }
+:is(.dirpop, body.dir) .fld[aria-pressed="true"] b { background: var(--badge); }
+
+/* filters: the black island, with dark fields inside */
+:is(.dirpop, body.dir) .tools { padding: 10px; border-radius: 30px; background: var(--island); box-shadow: 0 24px 48px -24px rgba(0,0,0,.8); -webkit-backdrop-filter: none; backdrop-filter: none; }
+:is(.dirpop, body.dir) .tools .search { height: 52px; border-radius: 20px; background: var(--island-2); color: #fff; box-shadow: none; }
+:is(.dirpop, body.dir) .tools .search:focus-within { box-shadow: inset 0 0 0 2px var(--sun); }
+:is(.dirpop, body.dir) .tools .search input::placeholder { color: var(--muted); }
+:is(.dirpop, body.dir) .sel { height: 52px; border-radius: 18px; background: var(--island-2); box-shadow: none; }
+:is(.dirpop, body.dir) .sel:hover { background: var(--island-3); }
+:is(.dirpop, body.dir) .sel span { color: var(--muted); }
+:is(.dirpop, body.dir) .sel select { color: #fff; }
+:is(.dirpop, body.dir) .sel select option { color: #111; }
+:is(.dirpop, body.dir) .status { color: #fff; }
+:is(.dirpop, body.dir) .status b { font: 800 36px / 1 var(--grot); letter-spacing: -.03em; }
+:is(.dirpop, body.dir) .reset { color: var(--sun); }
+
+/* institutions: frosted widgets */
+:is(.dirpop, body.dir) .grid { gap: 14px; }
+:is(.dirpop, body.dir) .card { gap: 12px; border-radius: 28px; background: rgba(255,255,255,.93); color: var(--ink); box-shadow: 0 30px 60px -34px rgba(8,4,30,.8); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+:is(.dirpop, body.dir) .rank { display: grid; place-items: center; align-content: center; gap: 2px; min-width: 56px; height: 56px; padding: 0 8px; border-radius: 26%; background: linear-gradient(160deg, #FFE680, var(--sun) 60%, #E6A800); color: var(--navy); font: 800 22px / 1 var(--grot); letter-spacing: -.03em; box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 10px 20px -12px rgba(0,0,0,.5); }
+:is(.dirpop, body.dir) .rank small { order: -1; font: 700 9px / 1 var(--sans); letter-spacing: .12em; }
+:is(.dirpop, body.dir) .rank--none { width: 56px; padding: 0 6px; background: #E9E9EF; color: #6B6B76; font: 700 10px / 1.15 var(--sans); text-align: center; box-shadow: none; }
+:is(.dirpop, body.dir) .type { padding: 5px 10px; border-radius: 999px; background: color-mix(in srgb, var(--c) 12%, #fff); color: var(--c); font-size: 11px; }
+:is(.dirpop, body.dir) .card h3 { font: 700 21px / 1.12 var(--grot); letter-spacing: -.02em; }
+:is(.dirpop, body.dir) .flds small { color: #6B6B76; opacity: 1; }
+:is(.dirpop, body.dir) .flds span { background: color-mix(in srgb, var(--fc, #0A1A5C) 11%, #fff); color: color-mix(in srgb, var(--fc, #0A1A5C) 80%, #000); }
+:is(.dirpop, body.dir) .flds span.hit { background: var(--fc, var(--red)); color: #fff; }
+:is(.dirpop, body.dir) .flds span.none { background: none; color: inherit; }
+:is(.dirpop, body.dir) .acc { border-top: 0; padding: 10px 12px; border-radius: 16px; background: #F2F2F7; }
+:is(.dirpop, body.dir) .acc b { font: 800 26px / 1 var(--grot); letter-spacing: -.03em; }
+:is(.dirpop, body.dir) .acc i { left: 12px; bottom: 6px; max-width: calc(100% - 24px); }
+:is(.dirpop, body.dir) .card-act .btn { width: 100%; }
+
+:is(.dirpop, body.dir) .more .btn { background: rgba(255,255,255,.14); color: #fff; box-shadow: inset 0 0 0 1px var(--glass-line); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+:is(.dirpop, body.dir) .more .btn:hover { background: #fff; color: var(--ink); }
+:is(.dirpop, body.dir) .empty { color: #fff; }
+:is(.dirpop, body.dir) .empty a { color: var(--sun); }
+:is(.dirpop, body.dir) .dnote { color: var(--soft); opacity: 1; }
+:is(.dirpop, body.dir) .toast { border-radius: 22px; background: var(--island); }
+:is(.dirpop, body.dir) .dfoot { background: rgba(14,8,40,.7); }
+
+@media (max-width: 900px) { :is(.dirpop, body.dir) .fields { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 560px) {
+  :is(.dirpop, body.dir) .fields { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px 6px; border-radius: 30px; }
+  :is(.dirpop, body.dir) .fld-i { width: 60px; height: 60px; }
+  :is(.dirpop, body.dir) .fld b { left: calc(50% + 18px); }
+  :is(.dirpop, body.dir) .fld-t { font-size: 11px; }
+  :is(.dirpop, body.dir) .tchip { min-width: 0; flex: 1 1 140px; }
+  :is(.dirpop, body.dir) .tools { border-radius: 26px; }
+}

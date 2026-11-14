@@ -1,0 +1,54 @@
+/* ---------- Why Malaysia: the coil (replaces the statement and reason grid) ----------
+   The section pins for as long as the coil turns (set by the script: half a screen per card, plus the way in and out);
+   the headline sits centred on the stage and the cards are drawn over it. */
+#why.why { overflow: clip; padding: 0; }
+.wm { position: relative; z-index: 1; height: var(--wm-span, 740vh); }
+.wm-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.wm-title { position: absolute; inset: 0; z-index: 1; display: grid; place-content: center; justify-items: center; gap: 16px; padding: 0 var(--pad); text-align: center; pointer-events: none; }
+.wm-title .kick { margin: 0; justify-content: center; }
+.wm-h { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 6.4vw, 108px); line-height: .98; letter-spacing: -.04em; text-wrap: balance; }
+.wm-h span { display: block; }
+.wm-h em { font-style: italic; font-weight: 340; color: var(--sun); }
+.wm-gl { position: absolute; inset: 0; z-index: 2; display: block; width: 100%; height: 100%; pointer-events: none; opacity: 0; transition: opacity .8s; }
+.wm-ready .wm-gl { opacity: 1; }
+/* without WebGL2: the cards as a plain grid */
+.wm-list { display: none; }
+.wm-nogl { height: auto; } .wm-nogl .wm-stage { position: relative; height: auto; padding: 120px var(--pad) 40px; }
+.wm-nogl .wm-gl { display: none; } .wm-nogl .wm-title { position: relative; }
+.wm-nogl .wm-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin: 0 var(--pad) 80px; padding: 0; list-style: none; }
+.wm-list li { overflow: hidden; border-radius: 18px; background: rgba(255,255,255,.06); }
+.wm-list img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.wm-list div { padding: 16px 18px 20px; } .wm-list b { display: block; margin-bottom: 6px; font: 800 20px var(--sans); } .wm-list p { margin: 0; font-size: 14px; opacity: .8; }
+/* the end panel: what the zoomed sheet turns into, so the screen is never left empty.
+   The script sets --wm-end from 0 to 1 as the lens closes; each line rises in a beat after the one before. */
+.wm-end { position: absolute; inset: 0; z-index: 3; display: grid; place-items: center; padding: 72px var(--pad) 110px; text-align: center; visibility: hidden; pointer-events: none; }
+.wm-end.on { visibility: visible; } .wm-end.live { pointer-events: auto; }
+.wm-end-in { position: relative; width: min(1080px, 100%); display: grid; justify-items: center; gap: clamp(18px, 2.6vh, 28px); }
+.wm-end .kick { margin: 0; justify-content: center; }
+.wm-e { --o: clamp(0, calc(var(--wm-end, 0) * 1.9 - var(--d, 0) * .17), 1); opacity: var(--o); transform: translateY(calc((1 - var(--o)) * 30px)); }
+.wm-end-h { margin: 0; max-width: 16ch; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 5.2vw, 84px); line-height: 1; letter-spacing: -.035em; text-wrap: balance; }
+.wm-end-h em { display: block; font-style: italic; font-weight: 340; color: var(--sun); }
+.wm-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; width: 100%; margin: 6px 0 0; padding: 0; list-style: none; counter-reset: none; }
+.wm-steps li { position: relative; display: grid; gap: 6px; align-content: start; padding: 20px 22px 22px; border: 1px solid rgba(255,255,255,.14); border-radius: 18px; background: rgba(255,255,255,.05); text-align: left; transition: background .3s, border-color .3s; }
+.wm-steps li:hover { background: rgba(255,255,255,.09); border-color: rgba(255,204,0,.45); }
+.wm-steps span { font: 700 12px/1 var(--mono, ui-monospace, monospace); letter-spacing: .12em; color: var(--sun); }
+.wm-steps b { font: 800 clamp(17px, 1.5vw, 20px)/1.2 var(--sans); }
+.wm-steps p { margin: 0; font-size: 14px; line-height: 1.45; opacity: .78; }
+.wm-end-acts { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 4px; }
+/* the sheet's dashed ring, carried over and slowly turning behind the words */
+.wm-end-ring { position: absolute; left: 50%; top: 50%; width: min(118vh, 96vw); aspect-ratio: 1; border: 2px dashed rgba(255,204,0,.22); border-radius: 50%; translate: -50% -50%; opacity: calc(var(--wm-end, 0) * .9); scale: calc(.8 + var(--wm-end, 0) * .2); animation: wm-turn 60s linear infinite; pointer-events: none; }
+.wm-end-ring::after { content: ""; position: absolute; inset: 9%; border: 1px solid rgba(255,255,255,.07); border-radius: 50%; }
+@keyframes wm-turn { to { rotate: 360deg; } }
+@media (prefers-reduced-motion: reduce) { .wm-end-ring { animation: none; } }
+.wm-nogl .wm-end { position: relative; visibility: visible; pointer-events: auto; --wm-end: 1; padding-bottom: 120px; }
+@media (max-width: 759px) {
+  .wm-h { font-size: clamp(34px, 10.5vw, 52px); }
+  .wm-end { padding: 64px var(--pad) 96px; }
+  .wm-end-in { gap: 14px; }
+  .wm-end-h { font-size: clamp(30px, 8.6vw, 42px); }
+  .wm-steps { grid-template-columns: 1fr; gap: 8px; }
+  .wm-steps li { grid-template-columns: auto 1fr; column-gap: 12px; row-gap: 2px; padding: 12px 14px; }
+  .wm-steps span { grid-row: span 2; padding-top: 3px; }
+  .wm-steps b { font-size: 16px; } .wm-steps p { font-size: 13px; }
+  .wm-end-acts { flex-direction: column; align-items: stretch; width: 100%; } .wm-end-acts .btn { justify-content: center; }
+}

@@ -1,0 +1,121 @@
+/* ---------- 07 · Life in Malaysia: extra motion, and the festival year (assets/js/life-fx.js) ---------- */
+
+/* photo wall: the photo under the pointer steps forward, the rest fall back */
+.gi { transition: scale .6s var(--ease), rotate .6s var(--ease), filter .5s, box-shadow .5s; }
+@media (hover: hover) {
+  .gal:has(.gi:hover) .gi:not(:hover) { filter: brightness(.5) saturate(.6); }
+  .gi:hover { scale: 1.05; rotate: -1.2deg; z-index: 2; box-shadow: 0 30px 60px -24px rgba(0,0,0,.8); }
+  .gal-col:nth-child(even) .gi:hover { rotate: 1.2deg; }
+}
+.gi figcaption span { display: inline-block; justify-self: start; margin-top: 4px; padding: 3px 9px; border-radius: 999px; background: rgba(255,255,255,.16); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+
+/* the word band */
+.lf-band { position: relative; z-index: 1; margin: clamp(50px, 7vw, 100px) 0 0; display: grid; gap: 6px; overflow: hidden; rotate: -2deg; scale: 1.04; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.lf-row { overflow: hidden; }
+.lf-run { display: flex; align-items: center; width: max-content; animation: lf-run 46s linear infinite; will-change: transform; }
+.lf-row.rev .lf-run { animation-direction: reverse; animation-duration: 54s; }
+@keyframes lf-run { to { transform: translate3d(-50%, 0, 0); } }
+.lf-run span { font-family: var(--serif); font-style: italic; font-weight: 340; font-size: clamp(44px, 6.4vw, 104px); line-height: 1.1; letter-spacing: -.02em; white-space: nowrap; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.4); padding: 0 .1em; }
+.lf-run span.fill { color: var(--accent); -webkit-text-stroke: 0; }
+.lf-run i { flex: none; width: .5em; height: .5em; margin: 0 clamp(16px, 2.4vw, 40px); font-size: clamp(22px, 3vw, 46px); background: var(--accent); clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); opacity: .8; }
+
+/* the phrase card */
+.speak-card { isolation: isolate; }
+.lf-ghost { position: absolute; z-index: -1; right: -4%; bottom: -18%; font-family: var(--serif); font-style: italic; font-size: clamp(90px, 13vw, 210px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.1); pointer-events: none; }
+.lf-bars { display: inline-flex; align-items: center; gap: 2px; height: 14px; margin-left: 8px; }
+.lf-bars i { width: 3px; height: 4px; border-radius: 2px; background: currentColor; opacity: .6; }
+.is-speaking .lf-bars i { animation: lf-bar .5s ease-in-out infinite alternate; opacity: 1; }
+.is-speaking .lf-bars i:nth-child(2) { animation-delay: -.2s; } .is-speaking .lf-bars i:nth-child(3) { animation-delay: -.35s; } .is-speaking .lf-bars i:nth-child(4) { animation-delay: -.1s; } .is-speaking .lf-bars i:nth-child(5) { animation-delay: -.28s; }
+@keyframes lf-bar { from { transform: scaleY(1); } to { transform: scaleY(3.4); } }
+.chip { position: relative; overflow: hidden; }
+.lf-auto .chip.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: #6A0C1E; transform-origin: 0 50%; animation: lf-chip 3.8s linear both; }
+@keyframes lf-chip { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* the festival year */
+.fy-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 10px 40px; margin-bottom: 26px; }
+.fy-head .fest-h { margin: 0; }
+.fy-sub { max-width: 44ch; font-size: 15px; line-height: 1.55; opacity: .8; }
+.fy { --acc: var(--accent, #FFD9A0); }
+.fy-stage { position: relative; aspect-ratio: 16 / 7; min-height: 400px; max-height: 70vh; width: 100%; border-radius: 28px; overflow: hidden; isolation: isolate; background: #2a0510; box-shadow: 0 50px 100px -50px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,.1); }
+.fy-img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.fy-img.on { animation: fy-kb 14s ease-out both; }
+@keyframes fy-kb { from { object-position: 50% 60%; } to { object-position: 50% 40%; } }
+.fy-stage::after { content: ""; position: absolute; inset: 0; z-index: 1000; pointer-events: none; background: linear-gradient(90deg, rgba(40,2,12,.9) 0%, rgba(40,2,12,.55) 38%, rgba(40,2,12,0) 68%), linear-gradient(0deg, rgba(40,2,12,.7), rgba(40,2,12,0) 45%); }
+.fy-fx { position: absolute; inset: 0; z-index: 1001; pointer-events: none; overflow: hidden; }
+.fy-g { position: absolute; inset: 0; opacity: 0; transition: opacity .8s; }
+.fy-g.on { opacity: 1; }
+.fy-g:not(.on) * { animation-play-state: paused !important; }
+.fy-lan { position: absolute; bottom: 0; aspect-ratio: 60 / 96; color: #E8263A; filter: drop-shadow(0 0 12px rgba(255,180,60,.6)); animation: fy-rise 12s linear infinite; }
+@keyframes fy-rise { from { transform: translate3d(0, 120%, 0) rotate(-4deg); opacity: 0; } 12% { opacity: .95; } 85% { opacity: .9; } to { transform: translate3d(var(--dx, 0), -640px, 0) rotate(5deg); opacity: 0; } }
+.fy-petal { position: absolute; top: -20px; width: 12px; height: 9px; border-radius: 60% 40% 60% 40%; scale: var(--s, 1); animation: fy-fall 8s linear infinite; }
+@keyframes fy-fall { from { transform: translate3d(0, -20px, 0) rotate(0); opacity: 0; } 10% { opacity: .95; } 90% { opacity: .9; } to { transform: translate3d(var(--dx, 0), 640px, 0) rotate(520deg); opacity: 0; } }
+.fy-moon { position: absolute; right: 9%; top: 10%; width: 86px; height: 86px; border-radius: 50%; box-shadow: inset -22px 6px 0 0 #FFE9A8; rotate: -24deg; filter: drop-shadow(0 0 18px rgba(255,230,160,.7)); animation: fy-moon 6s ease-in-out infinite alternate; }
+@keyframes fy-moon { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+.fy-star { position: absolute; width: 10px; height: 10px; background: #FFF3C4; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); scale: var(--s, 1); animation: fy-tw 3s ease-in-out infinite alternate; }
+@keyframes fy-tw { from { opacity: .15; transform: scale(.6) rotate(0); } to { opacity: 1; transform: scale(1.2) rotate(45deg); } }
+.fy-burst { position: absolute; width: 0; height: 0; }
+.fy-burst i { position: absolute; left: -2px; top: -2px; width: 4px; height: 4px; border-radius: 50%; background: currentColor; box-shadow: 0 0 8px currentColor; opacity: 0; animation: fy-boom 3.2s cubic-bezier(.1,.7,.2,1) infinite; }
+@keyframes fy-boom { 0% { transform: rotate(var(--a)) translateY(0) scale(1); opacity: 0; } 4% { opacity: 1; } 45% { transform: rotate(var(--a)) translateY(-92px) scale(1); opacity: 1; } 70%, 100% { transform: rotate(var(--a)) translateY(-112px) scale(.2); opacity: 0; } }
+.fy-copy { position: absolute; z-index: 1002; left: clamp(22px, 4vw, 52px); bottom: clamp(22px, 4vw, 48px); max-width: min(520px, 62%); display: grid; gap: 10px; justify-items: start; color: #fff; }
+.fy-when { font-size: 12px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--acc); }
+.fy-name { font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 5.6vw, 88px); line-height: .95; letter-spacing: -.025em; overflow: hidden; padding-bottom: .08em; }
+.fy-name span { display: inline-block; }
+.fy-text { font-size: clamp(15px, 1.15vw, 18px); line-height: 1.55; opacity: .9; max-width: 40ch; }
+.fy-next { padding: 7px 12px; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); font-size: 12px; font-weight: 800; letter-spacing: .06em; }
+.fy-next.is-next { background: var(--acc); border-color: var(--acc); color: #5a0a1a; }
+.fy-count { position: absolute; z-index: 1002; top: clamp(16px, 2vw, 24px); right: clamp(18px, 2.4vw, 28px); font-size: 12px; font-weight: 800; letter-spacing: .16em; color: #fff; opacity: .85; }
+
+/* the twelve-month ruler */
+.fy-year { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 4px; margin: 16px 0 12px; }
+.fy-m { position: relative; display: grid; justify-items: center; gap: 5px; padding: 9px 2px 8px; border-radius: 12px; background: rgba(255,255,255,.05); border: 1px solid transparent; transition: background .4s, border-color .4s, transform .5s var(--ease); cursor: default; }
+.fy-m:has(.fy-dots i) { cursor: pointer; }
+.fy-m b { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; opacity: .6; transition: opacity .3s; }
+.fy-dots { display: flex; gap: 4px; min-height: 7px; }
+.fy-dots i { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.4); transition: background .3s, transform .4s var(--ease); }
+.fy-m.on { background: rgba(255,255,255,.14); border-color: var(--acc); transform: translateY(-4px); }
+.fy-m.on b { opacity: 1; }
+.fy-m.on .fy-dots i { background: var(--acc); transform: scale(1.25); }
+.fy-m.is-now { border-color: rgba(255,255,255,.45); border-style: dashed; }
+.fy-m.is-now b { opacity: 1; }
+.fy-m em { position: absolute; top: -9px; left: 50%; translate: -50% 0; padding: 2px 7px; border-radius: 999px; background: #fff; color: #5a0a1a; font: 800 9px/1.3 var(--sans); letter-spacing: .1em; text-transform: uppercase; font-style: normal; white-space: nowrap; }
+.fy.is-moving .fy-m { animation: fy-sweep 2.4s ease-in-out infinite; animation-delay: calc(var(--i, 0) * .1s); }
+.fy.is-moving .fy-m:nth-child(1) { --i: 0; } .fy.is-moving .fy-m:nth-child(2) { --i: 1; } .fy.is-moving .fy-m:nth-child(3) { --i: 2; } .fy.is-moving .fy-m:nth-child(4) { --i: 3; } .fy.is-moving .fy-m:nth-child(5) { --i: 4; } .fy.is-moving .fy-m:nth-child(6) { --i: 5; }
+.fy.is-moving .fy-m:nth-child(7) { --i: 6; } .fy.is-moving .fy-m:nth-child(8) { --i: 7; } .fy.is-moving .fy-m:nth-child(9) { --i: 8; } .fy.is-moving .fy-m:nth-child(10) { --i: 9; } .fy.is-moving .fy-m:nth-child(11) { --i: 10; } .fy.is-moving .fy-m:nth-child(12) { --i: 11; }
+@keyframes fy-sweep { 0%, 60%, 100% { opacity: 1; } 30% { opacity: .45; } }
+
+/* the four festivals */
+.fy-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.fy-tabs button { position: relative; display: flex; align-items: center; gap: 12px; padding: 8px 12px 11px 8px; border: 1px solid rgba(255,255,255,.14); border-radius: 16px; background: rgba(255,255,255,.06); color: #fff; font: inherit; text-align: left; cursor: pointer; overflow: hidden; transition: background .3s, border-color .3s, transform .4s var(--ease); }
+.fy-tabs button:hover { background: rgba(255,255,255,.12); transform: translateY(-3px); }
+.fy-tabs button.on { background: rgba(255,255,255,.16); border-color: var(--acc); }
+.fy-tabs img { flex: none; width: 62px; height: 46px; border-radius: 10px; object-fit: cover; }
+.fy-tabs span { display: grid; gap: 2px; min-width: 0; }
+.fy-tabs small { font-size: 10.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--acc); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fy-tabs b { font-family: var(--serif); font-weight: 420; font-size: 18px; line-height: 1.1; }
+.fy-prog { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255,255,255,.1); }
+.fy-prog i { display: block; height: 100%; background: var(--acc); transform-origin: 0 50%; transform: scaleX(0); }
+.fy-tabs button.on .fy-prog i { transform: scaleX(1); }
+.fy-tabs button.on.run .fy-prog i { animation: fy-prog 6s linear both; }
+@keyframes fy-prog { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.fy-tabs button:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+
+@media (max-width: 900px) {
+  .fy-stage { aspect-ratio: 4 / 5; min-height: 0; max-height: none; border-radius: 22px; }
+  .fy-stage::after { background: linear-gradient(0deg, rgba(40,2,12,.94) 0%, rgba(40,2,12,.6) 45%, rgba(40,2,12,0) 72%); }
+  .fy-copy { max-width: none; right: 20px; }
+  .fy-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .fy-tabs img { width: 46px; height: 38px; }
+  .fy-tabs b { font-size: 15px; }
+  .fy-year { gap: 2px; }
+  .fy-m { padding: 8px 0 6px; border-radius: 8px; }
+  .fy-m b { font-size: 9px; letter-spacing: .04em; }
+  .fy-dots i { width: 5px; height: 5px; }
+  .lf-ghost { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lf-run, .fy-img.on, .fy-g *, .fy.is-moving .fy-m { animation: none !important; }
+  .fy-lan, .fy-petal { display: none; }
+  .fy-burst i { opacity: .8; transform: rotate(var(--a)) translateY(-70px); }
+}
+.lite .gi figcaption span { background: rgba(60,5,15,.6); }
+@media (max-width: 900px) { .fy-tabs small { white-space: normal; font-size: 9.5px; } }

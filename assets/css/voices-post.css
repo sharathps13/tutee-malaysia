@@ -1,0 +1,44 @@
+/* ---------- Students & parents · social post testimonial (after 21st's "Social Post Testimonial", MIT) ---------- */
+.voices .pt { --pt-ink: #0B1030; --pt-acc: #0A1A5C; --pt-star: #E8A23A; --pt-hl: rgba(255, 204, 0, .55); margin-top: clamp(20px, 4vw, 48px); }
+.voices .pt-stage { position: relative; display: grid; place-items: center; padding: 20px 0; perspective: 1800px; }
+.voices .pt-glow { position: absolute; inset: -10% -6%; pointer-events: none; background: radial-gradient(ellipse 70% 70% at 50% 60%, rgba(255, 204, 0, .24), rgba(255, 204, 0, .06) 45%, transparent 75%); }
+.voices .pt-card { position: relative; box-sizing: border-box; display: flex; flex-direction: column; gap: .9em; width: min(620px, 100%); padding: clamp(22px, 3vw, 43px); border-radius: clamp(14px, 1.9vw, 27px);
+  background: #fff; color: var(--pt-ink); font: 400 clamp(18px, 1.55vw, 23px) / 1.38 var(--sans); letter-spacing: -.012em; transform-origin: 50% 100%; opacity: 0;
+  box-shadow: 0 15px 39px -8px rgba(11, 16, 48, .24), 0 0 0 1px rgba(11, 16, 48, .07); will-change: transform, opacity; }
+.voices .pt-top { display: flex; align-items: center; gap: .56em; }
+.voices .pt-av { display: grid; place-items: center; flex: none; width: 2.35em; height: 2.35em; border-radius: 50%; overflow: hidden; background: linear-gradient(140deg, var(--pt-acc), color-mix(in srgb, var(--pt-acc) 55%, #fff)); }
+.voices .pt-av span { font-weight: 600; font-size: .89em; color: #fff; letter-spacing: -.02em; line-height: 1; }
+.voices .pt-who { display: flex; flex-direction: column; gap: .11em; min-width: 0; }
+.voices .pt-nm { display: flex; align-items: center; gap: .28em; }
+.voices .pt-name { font-weight: 650; font-size: .94em; letter-spacing: -.015em; line-height: 1.15; }
+.voices .pt-badge { display: inline-flex; }
+.voices .pt-bdg { width: .9em; height: .9em; fill: var(--pt-acc); stroke: var(--pt-acc); stroke-width: 1.8; }
+.voices .pt-meta { font-size: .84em; color: rgba(11, 16, 48, .42); line-height: 1.2; }
+.voices .pt-post { margin: 0; font-size: 1em; line-height: 1.38; text-wrap: pretty; }
+.voices .pt-w { display: inline-block; will-change: transform, opacity, filter; }
+.voices .pt-em { font-weight: 600; background-image: linear-gradient(var(--pt-hl), var(--pt-hl)); background-repeat: no-repeat; background-size: 0% 100%; }
+.voices .pt-hlg { background-image: linear-gradient(var(--pt-hl), var(--pt-hl)); background-repeat: no-repeat; background-size: 0% 100%; }
+.voices .pt-foot { display: flex; align-items: center; justify-content: space-between; gap: .6em; padding: .95em 18% 0 0; border-top: 1px solid rgba(11, 16, 48, .1); font-size: .84em; color: rgba(11, 16, 48, .64); line-height: 1.2; }
+.voices .pt-it { position: relative; display: flex; align-items: center; gap: .42em; min-width: 0; font-weight: 500; white-space: nowrap; }
+.voices .pt-it span { overflow: hidden; text-overflow: ellipsis; }
+.voices .pt-ic { display: block; flex: none; width: 1.15em; height: 1.15em; overflow: visible; }
+.voices .pt-pop { position: relative; width: 1.15em; height: 1.15em; }
+.voices .pt-pop i { position: absolute; left: 50%; top: 50%; width: .18em; height: .18em; margin: -.09em 0 0 -.09em; border-radius: 50%; background: var(--pt-star); opacity: 0; }
+.voices .pt-val { font-variant-numeric: tabular-nums; }
+.voices .pt-rate.on { color: var(--pt-star); }
+.voices .pt-rate.on .pt-star { fill: var(--pt-star); }
+
+.voices .pt-dots { display: flex; justify-content: center; gap: 8px; margin-top: 6px; }
+.voices .pt-dots button { display: grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; background: none; cursor: pointer; }
+.voices .pt-dots i { display: block; width: 8px; height: 8px; border-radius: 999px; background: rgba(255, 255, 255, .35); transition: width .4s var(--ease), background-color .3s; }
+.voices .pt-dots button:hover i { background: rgba(255, 255, 255, .7); }
+.voices .pt-dots button.on i { width: 26px; background: var(--sun); }
+.voices .pt-dots button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; border-radius: 8px; }
+
+@media (max-width: 760px) {
+  .voices .pt-card { font-size: 18px; }
+  .voices .pt-foot { padding-right: 0; }
+  .voices .pt-it:nth-child(2) { display: none; }
+  .voices .pt-dots { gap: 2px; }
+}
+@media (prefers-reduced-motion: reduce) { .voices .pt-card { opacity: 1; } .voices .pt-dots i { transition: none; } }

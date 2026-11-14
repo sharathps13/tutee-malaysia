@@ -1,0 +1,42 @@
+/* ---------- Bringing your family: four steps that rise into a row as you scroll ----------
+   The section pins for three and a half screens. The first card waits in place; each of the next three
+   slides up from 80% of a screen below, one screen of scrolling each, then the full row holds before
+   the page moves on. Below 1000px wide (or with reduced motion) the cards simply stack. */
+#family.family { padding: 0; overflow: clip; }
+.fh { position: relative; z-index: 1; }
+.fh-stage { display: flex; flex-direction: column; justify-content: center; gap: clamp(28px, 5.5vh, 64px); padding: 96px var(--pad) 72px; }
+.fh-head { display: grid; justify-items: center; gap: 14px; text-align: center; }
+.fh-head .kick { margin: 0; justify-content: center; }
+.fh-h { margin: 0; font-family: var(--sans); font-weight: 800; font-size: clamp(32px, 3.9vw, 56px); line-height: 1; letter-spacing: -.01em; text-transform: uppercase; text-wrap: balance; }
+.fh-h em { font-style: normal; color: var(--accent); }
+.fh-sub { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: .04em; line-height: 1.3; text-transform: uppercase; opacity: .75; }
+
+.fh-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.2vw, 18px); width: min(1340px, 100%); margin: 0 auto; padding: 0; list-style: none; }
+/* each card: a faint frame with corner brackets, and the panel inside it */
+.fh-card { --bc: rgba(11,16,48,.72); position: relative; height: clamp(340px, 57.8vh, 520px); padding: 12px; will-change: transform;
+  background:
+    linear-gradient(var(--bc), var(--bc)) left top / 12px 2px no-repeat, linear-gradient(var(--bc), var(--bc)) left top / 2px 12px no-repeat,
+    linear-gradient(var(--bc), var(--bc)) right top / 12px 2px no-repeat, linear-gradient(var(--bc), var(--bc)) right top / 2px 12px no-repeat,
+    linear-gradient(var(--bc), var(--bc)) left bottom / 12px 2px no-repeat, linear-gradient(var(--bc), var(--bc)) left bottom / 2px 12px no-repeat,
+    linear-gradient(var(--bc), var(--bc)) right bottom / 12px 2px no-repeat, linear-gradient(var(--bc), var(--bc)) right bottom / 2px 12px no-repeat,
+    rgba(255,255,255,.16); }
+.fh-in { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 28px 24px; background: rgba(255,255,255,.42); text-align: center; }
+.fh-in svg { flex: none; width: 48px; height: 48px; margin-bottom: clamp(28px, 5vh, 52px); }
+.fh-in h3 { margin: 0 0 16px; font: 700 clamp(22px, 2.2vw, 32px)/1 var(--sans); letter-spacing: -.01em; text-transform: uppercase; }
+.fh-in p { margin: 0; max-width: 27ch; font-size: clamp(14.5px, 1.1vw, 16px); line-height: 1.5; opacity: .75; }
+/* the last step carries the accent, as the original's last card does */
+.fh-card.is-last { --bc: var(--accent); color: var(--accent); background-color: color-mix(in srgb, var(--accent) 4%, transparent); }
+.fh-card.is-last .fh-in { background: color-mix(in srgb, var(--accent) 9%, rgba(255,255,255,.3)); }
+.fh-card.is-last p { opacity: .9; }
+
+@media (min-width: 1000px) and (min-height: 600px) and (prefers-reduced-motion: no-preference) {
+  .fh { height: 450vh; }
+  /* bottom padding keeps the row clear of the page's section dock */
+  .fh-stage { position: sticky; top: 0; height: 100vh; height: 100svh; padding-top: 84px; padding-bottom: 104px; }
+  .fh-card { height: clamp(330px, 54vh, 500px); }
+}
+@media (max-width: 999px) {
+  .fh-row { grid-template-columns: 1fr; gap: 16px; max-width: 560px; }
+  .fh-card { height: auto; min-height: 400px; }
+  .fh-in { padding: 40px 28px; }
+}

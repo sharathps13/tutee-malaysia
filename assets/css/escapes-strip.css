@@ -1,0 +1,75 @@
+/* ===== Semester breaks: the journey strip =====
+   Scrolling pins the strip and slides twelve destination panels sideways; photos wipe in with parallax,
+   titles rise letter by letter, and a rail of dots tracks the current stop. Phones get a vertical stack. */
+.escapes { --gold: #FFE29A; --ink: #2A0E18; --grot: "Bricolage Grotesque", var(--sans); --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; --hand: "Caveat", "Segoe Print", cursive; }
+.escapes .head { margin-bottom: clamp(10px, 2vw, 24px); }
+.escapes > .js-pin { z-index: 1; }
+.escapes .js-track { padding-left: max(var(--pad), 20px); }
+.escapes .js-dest:first-child { padding-left: 0; }
+.escapes .js-outro .kick { color: var(--gold); }
+/* the page's section dock sits at the bottom centre, so the rail and panels clear it */
+@media (min-width: 761px) { .escapes .js-rail { bottom: 96px; } .escapes .js-p { padding-bottom: 170px; } }
+
+
+.escapes .js-pin { position: relative; height: 100vh; height: 100svh; overflow: hidden; }
+.js-track { display: flex; align-items: stretch; height: 100%; width: max-content; will-change: transform; }
+.js-p { position: relative; flex: none; display: grid; align-content: center; height: 100%; padding: 90px clamp(24px, 4vw, 60px) 110px; }
+.js-intro { width: min(86vw, 820px); padding-left: max(var(--pad), 24px); gap: 18px; }
+.js-intro .h2 { font-size: clamp(48px, 7vw, 112px); }
+.js-cue { display: inline-flex; align-items: center; gap: 10px; font: 700 13px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.js-cue i { font-style: normal; animation: nudge 1.4s ease-in-out infinite; }
+@keyframes nudge { 50% { transform: translateX(8px); } }
+.js-dest { width: min(78vw, 1040px); grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(20px, 3vw, 44px); align-items: center; }
+.js-dest.alt .js-ph { order: 2; }
+.js-ph { position: relative; height: min(62vh, 560px); border-radius: 30px; overflow: hidden; background: rgba(0,0,0,.2); box-shadow: 0 40px 80px -40px rgba(60,0,20,.8); }
+.js-ph img { position: absolute; inset: -4% -12%; width: 124%; height: 108%; max-width: none; object-fit: cover; }
+.js-ph .js-n { position: absolute; left: 20px; top: 16px; font: 800 clamp(60px, 8vw, 120px) / .8 var(--grot); color: #fff; mix-blend-mode: overlay; letter-spacing: -.05em; }
+.js-tag { position: absolute; right: 16px; bottom: 16px; padding: 6px 12px; border-radius: 999px; background: rgba(0,0,0,.4); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font: 700 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.js-meta { display: grid; gap: 16px; min-width: 0; }
+.js-meta .js-reg { font: 700 12px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
+.js-meta h3 { font: 800 clamp(38px, 5vw, 78px) / .92 var(--grot); letter-spacing: -.04em; text-wrap: balance; }
+.js-meta h3 .c { display: inline-block; }
+.js-facts { display: grid; gap: 10px; }
+.js-facts div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.25); font-size: 15px; line-height: 1.45; }
+.js-facts small { font: 700 10.5px var(--mono); letter-spacing: .12em; text-transform: uppercase; opacity: .8; padding-top: 3px; }
+.js-tip { font: 600 clamp(22px, 2.2vw, 28px) / 1.15 var(--hand); color: var(--gold); }
+.js-outro { width: min(80vw, 640px); gap: 16px; justify-items: start; padding-right: max(var(--pad), 40px); }
+.js-outro h3 { font: 800 clamp(40px, 5vw, 76px) / .95 var(--grot); letter-spacing: -.04em; }
+.js-rail { position: absolute; z-index: 3; left: var(--pad); right: var(--pad); bottom: 28px; display: grid; gap: 10px; }
+.js-bar { height: 3px; border-radius: 3px; background: rgba(255,255,255,.25); overflow: hidden; }
+.js-bar i { display: block; height: 100%; background: var(--gold); transform-origin: 0 50%; transform: scaleX(0); }
+.js-dots { display: flex; justify-content: space-between; gap: 4px; }
+.js-dots button { flex: 1; min-width: 0; height: 30px; padding: 0 4px; border: 0; border-radius: 999px; background: none; color: #fff; font: 700 11px var(--mono); opacity: .55; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: opacity .3s, background-color .3s, color .3s; }
+.js-dots button:hover { opacity: 1; }
+.js-dots button.on { opacity: 1; background: var(--gold); color: var(--ink); }
+@media (max-width: 760px) {
+  .js-pin { height: auto; overflow: visible; }
+  .js-track { flex-direction: column; width: auto; }
+  .js-p { height: auto; padding: 40px 20px; }
+  .js-intro, .js-dest, .js-outro { width: auto; }
+  .js-intro { padding-top: 110px; }
+  .js-dest { grid-template-columns: minmax(0, 1fr); }
+  .js-dest.alt .js-ph { order: 0; }
+  .js-ph { height: 64vw; }
+  .js-facts div { grid-template-columns: 90px minmax(0, 1fr); font-size: 14px; }
+  .js-rail, .js-cue { display: none; }
+}
+
+
+/* ---------- arrow buttons: step through the twelve destinations ---------- */
+.escapes .js-arrows { position: absolute; z-index: 4; left: var(--pad); right: var(--pad); top: 50%; display: flex; align-items: center; justify-content: space-between; pointer-events: none; transform: translateY(-60px); }
+.escapes .js-arrow { pointer-events: auto; display: grid; place-items: center; width: 60px; height: 60px; padding: 0; border: 0; border-radius: 50%; background: #fff; color: var(--ink); cursor: pointer; box-shadow: 0 18px 40px -16px rgba(40,0,15,.8); transition: background-color .25s, color .25s, border-color .25s, transform .35s var(--ease), opacity .25s; }
+.escapes .js-arrow svg { width: 24px; height: 24px; }
+.escapes .js-arrow:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); transform: scale(1.08); }
+.escapes .js-arrow:active { transform: scale(.96); }
+.escapes .js-arrow:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.escapes .js-arrow:disabled { opacity: .35; cursor: default; transform: none; background: #fff; color: var(--ink); }
+.escapes .js-arrow--prev { margin-left: -22px; }
+.escapes .js-arrow--next { margin-right: -22px; }
+.escapes .js-count { position: absolute; right: -22px; top: 72px; width: 60px; text-align: center; font: 700 12px var(--mono); letter-spacing: .08em; color: #fff; opacity: .9; white-space: nowrap; text-shadow: 0 1px 6px rgba(40,0,15,.6); }
+@media (max-width: 760px) { .escapes .js-arrows { display: none; } }
+
+/* the strip can be dragged sideways */
+.js-pin.can-drag .js-track, [data-js].can-drag .js-track { cursor: grab; }
+[data-js].is-drag, [data-js].is-drag .js-track { cursor: grabbing; user-select: none; -webkit-user-select: none; }
+[data-js].can-drag .js-track { touch-action: pan-y; }

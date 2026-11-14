@@ -1,0 +1,5 @@
+/* ---------- hero: halftone title ---------- */
+.hero-h[data-ht] { position: relative; }
+/* the real heading stays for screen readers and search; the dots on the canvas are what you see */
+.hero-h.ht-on, .hero-h.ht-on .hl, .hero-h.ht-on em { color: transparent; text-shadow: none; }
+.hero-h .ht-cv { position: absolute; pointer-events: none; }

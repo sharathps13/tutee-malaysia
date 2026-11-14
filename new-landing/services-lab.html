@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What we do options | Tutee Connect</title>
+<link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="./assets/css/services-lab.css">
+<script src="./assets/vendor/gsap.min.js" defer></script>
+<script src="./assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="./assets/vendor/Flip.min.js" defer></script>
+<script src="./assets/vendor/CustomEase.min.js" defer></script>
+<script src="./assets/vendor/MotionPathPlugin.min.js" defer></script>
+<script src="./assets/vendor/DrawSVGPlugin.min.js" defer></script>
+<script src="./assets/js/svc-data.js" defer></script>
+<script src="./assets/js/services-lab.js" defer></script>
+</head>
+<body class="sl">
+
+<header class="sl-nav">
+  <a class="nav-logo" href="./index.html"><img src="./assets/img/logo/icon.png" alt="" width="40" height="40"><span><b>Tutee Connect</b><small>What we do · options</small></span></a>
+  <nav class="sl-jump" aria-label="Options">
+    <a href="#o1"><b>1</b> Kinetic index</a><a href="#o2"><b>2</b> Shuffle mosaic</a><a href="#o3"><b>3</b> Golden thread</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ OPTION 1 · KINETIC INDEX ============ -->
+<section class="sl-sec ki" id="o1" aria-labelledby="ki-title" data-ki>
+  <p class="sl-tag">Option 1 · Kinetic index</p>
+  <div class="wrap">
+    <div class="head"><div><p class="kick">03 · What we do</p><h2 class="h2" id="ki-title">Nine services, <em>one counsellor.</em></h2></div><p class="lead">Point at a service to see it; click to open it. The photo follows you and becomes the open page.</p></div>
+    <ol class="ki-list" data-ki-list></ol>
+  </div>
+  <div class="ki-lens" data-ki-lens aria-hidden="true"><div class="ki-lens-in" data-ki-lens-in></div><span class="ki-lens-n" data-ki-lens-n></span></div>
+</section>
+
+<!-- ============ OPTION 2 · SHUFFLE MOSAIC ============ -->
+<section class="sl-sec sm" id="o2" aria-labelledby="sm-title" data-sm>
+  <p class="sl-tag">Option 2 · Shuffle mosaic</p>
+  <div class="wrap">
+    <div class="head"><div><p class="kick">03 · What we do</p><h2 class="h2" id="sm-title">Nine services, <em>one counsellor.</em></h2></div><p class="lead">Choose a tile. It moves to the front and the rest of the board reshuffles around it.</p></div>
+    <div class="sm-grid" data-sm-grid></div>
+  </div>
+</section>
+
+<!-- ============ OPTION 3 · GOLDEN THREAD ============ -->
+<section class="sl-sec gt" id="o3" aria-labelledby="gt-title" data-gt>
+  <p class="sl-tag">Option 3 · Golden thread</p>
+  <div class="wrap">
+    <div class="head"><div><p class="kick">03 · What we do</p><h2 class="h2" id="gt-title">One thread, <em>first call to first job.</em></h2></div><p class="lead">The thread draws itself as you scroll. Every knot is a service we handle; open one to read it.</p></div>
+    <div class="gt-grid">
+      <div class="gt-map" data-gt-map>
+        <svg viewBox="0 0 900 600" aria-hidden="true">
+          <defs><linearGradient id="gtg" x1="0" x2="1"><stop offset="0" stop-color="#F3D88A"/><stop offset=".5" stop-color="#E9B949"/><stop offset="1" stop-color="#C8902E"/></linearGradient>
+          <filter id="gtglow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <path class="gt-base" data-gt-base d=""/>
+          <path class="gt-line" data-gt-line d=""/>
+          <circle class="gt-spark" data-gt-spark r="7"/>
+        </svg>
+        <div class="gt-nodes" data-gt-nodes></div>
+      </div>
+      <aside class="gt-panel" data-gt-panel aria-live="polite"></aside>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="sl-foot"><p>Pick one option and it replaces the current carousel on the main page. Photography via Unsplash.</p></footer>
+</body>
+</html>
