@@ -261,8 +261,12 @@
         var x = Math.cos(c.ang) * W * .5 * c.rad * (mob ? 1.1 : 1), yy = Math.sin(c.ang) * H * .46 * c.rad;
         var fi = Math.min(1, (z - FAR) / 1700), fo = Math.min(1, (NEAR - z) / 380), o = Math.max(0, Math.min(fi * fi, fo));
         /* keep the title clear: on a phone the copy fills the width, so the clear zone is the whole middle of the screen */
-        var k = PERSP / (PERSP - z), qx = x * k / (W * .5), qy = yy * k / (H * .5), cen = mob ? qx * qx / 1.5 + qy * qy / .66 : qx * qx / .42 + qy * qy / .5;
-        if (cen < 1 && y < H * .6) o *= mob ? .1 + .9 * cen * cen * cen : .18 + .82 * cen * cen;
+        var k = PERSP / (PERSP - z), qx = x * k / (W * .5), qy = yy * k / (H * .5), cen = qx * qx / .42 + qy * qy / .5;
+        /* on a phone the copy (eyebrow, title, text, buttons) fills a full-width band down the middle: a card anywhere
+           in that band, counting its own height, all but disappears so nothing sits on the words */
+        var halfH = c.w * s * .5 * k / (H * .5);
+        if (mob) { if (y < H * .6 && qy + halfH > -.62 && qy - halfH < .78) o *= .06; }
+        else if (cen < 1 && y < H * .6) o *= .18 + .82 * cen * cen;
         c.el.style.transform = 'translate3d(' + (x - c.w * s / 2).toFixed(1) + 'px,' + (yy - c.w * s * .4).toFixed(1) + 'px,' + z.toFixed(1) + 'px) scale(' + s + ')';
         c.el.style.opacity = o.toFixed(3);
         c.el.style.zIndex = Math.round(z + 4000);
@@ -1237,4 +1241,14 @@
 
   if (ST && document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ST.refresh(); });
   window.addEventListener('load', function () { if (ST) ST.refresh(); });
+  /* sections change height after the page has loaded (the 3D scenes load as their section comes near and size
+     themselves, images arrive, cards open). Every scroll reveal is measured from the page's height, so when it changes
+     the reveals are measured again; otherwise on a phone everything below the change stays faded and half-shown */
+  if (ST && 'ResizeObserver' in window) {
+    var lastH = 0, rt = 0;
+    new ResizeObserver(function () {
+      var h = document.documentElement.scrollHeight; if (Math.abs(h - lastH) < 4) return; lastH = h;
+      clearTimeout(rt); rt = setTimeout(function () { ST.refresh(); }, 160);
+    }).observe(document.body);
+  }
 })();

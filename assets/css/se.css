@@ -36,6 +36,8 @@
   .lead { font-size: 15px; line-height: 1.55; }
   .btn { min-height: 46px; }
 
+  /* ----- hero: the photo caption is left out on phones (it sat on the buttons) ----- */
+  .hg-cap { display: none; }
   /* ----- hero: a shorter fly-through before the page starts ----- */
   .hg-space { height: 22vh; }
   .hg-copy { min-height: 0; }
